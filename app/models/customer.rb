@@ -1,5 +1,6 @@
 class Customer < ApplicationRecord
-  has_many :order
+  has_many :orders
+  has_one :send_address
 
 
 
