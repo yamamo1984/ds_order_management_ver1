@@ -1,5 +1,8 @@
 class Order < ApplicationRecord
   belongs_to :user
+  belongs_to :customer
+
+
 
   validates :order_num, presence: true
   validates :item_code, presence: true

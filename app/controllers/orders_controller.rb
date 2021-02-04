@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.save
-    %#データベースに保存されなかったら入力画面に戻る 成功したらトップに戻る # 
+    #<% データベースに保存されなかったら入力画面に戻る 成功したらトップに戻る # 
     if @order.save
        redirect_to root_path
 
