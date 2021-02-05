@@ -91,6 +91,18 @@ a {
   width: 50%;
 }
 
+.form__post1 {
+  width: 5%;
+}
+
+.form__post2 {
+  width: 8%;
+}
+
+.form__address {
+  width: 10%;
+}
+
 .field{
   margin: 10px 0;
 }

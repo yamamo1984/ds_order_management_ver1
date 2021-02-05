@@ -22,8 +22,14 @@ ActiveRecord::Schema.define(version: 2021_02_04_074751) do
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.integer "post_code_1"
+    t.integer "post_code_2"
     t.string "email"
-    t.string "address"
+    t.string "tel_num"
+    t.string "prefecture"
+    t.string "address_1"
+    t.string "address_2"
+    t.string "address_3"
     t.string "memo"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -63,9 +69,10 @@ ActiveRecord::Schema.define(version: 2021_02_04_074751) do
   end
 
   create_table "send_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "post_code"
+    t.integer "post_code_1"
+    t.integer "post_code_2"
     t.string "prefecture"
-    t.string "adress_1"
+    t.string "address_1"
     t.string "address_2"
     t.string "address_3"
     t.string "tel"

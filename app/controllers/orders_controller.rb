@@ -1,14 +1,17 @@
 class OrdersController < ApplicationController
   def index
     @orders = Order.all
+    
+
   end   
 
   def new
     @order = Order.new
+    @customers = Customer.all
   end  
 
   def create
-    @order = Order.new(order_params)
+    @order = Order.create(order_params)
     @order.save
     #<% データベースに保存されなかったら入力画面に戻る 成功したらトップに戻る # 
     if @order.save
