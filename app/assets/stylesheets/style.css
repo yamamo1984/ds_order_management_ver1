@@ -91,18 +91,6 @@ a {
   width: 50%;
 }
 
-.form__post1 {
-  width: 5%;
-}
-
-.form__post2 {
-  width: 8%;
-}
-
-.form__address {
-  width: 10%;
-}
-
 .field{
   margin: 10px 0;
 }
@@ -246,6 +234,42 @@ a {
   color: #999;
   text-decoration: underline;
 }
+/* オーダーページ */
+div.contents.row div.content_post .more:hover ul.more_list {
+  display: block;
+}
+
+div.contents.row div.content_post .more ul.more_list {
+  position: absolute;
+  text-align: left;
+  width: 80px;
+  right: 0;
+  font-size: 12px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  display: none;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+div.contents.row div.content_post .more ul.more_list li {
+  border-bottom: 1px solid #ddd;
+}
+
+div.contents.row div.content_post .more ul.more_list li:last-child {
+  border-bottom: 0;
+}
+
+div.contents.row div.content_post .more ul.more_list li a {
+  display: block;
+  padding: 5px;
+}
+
+div.contents.row div.content_post .more ul.more_list li a:hover {
+  background-color: #57C3E9;
+  color: #fff;
+}
+
 
 /* ユーザーページ */
 .user__wrapper{
