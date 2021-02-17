@@ -6,6 +6,8 @@ class Order < ApplicationRecord
     validates :price
   end
 
+ 
+
   belongs_to :user
 
 end
