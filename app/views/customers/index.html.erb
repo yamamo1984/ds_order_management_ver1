@@ -1,0 +1,31 @@
+<main class="main">
+  <div class="inner">
+       <% if user_signed_in? %>
+        <div class="greeting"> 
+        こんにちは、
+        <%= link_to current_user.last_name + current_user.first_name , root_path, class: :greeting__link%>
+        さん
+        </div>
+        <% end %>
+
+<h1>顧客一覧</h1>
+<div class="contents row">
+  <% @customer.each do |customer| %>  
+      <div class="more">
+       <%# <span><%= image_tag 'arrow_top.png' %></span>
+        <ul class="more_list">
+          <li>
+            <%= link_to '編集', edit_order_path(order.id), method: :get %>
+          </li>
+          <li>
+            <%= link_to '削除', order_path(order.id), method: :delete %>
+          </li>
+        </ul>
+      </div>
+      <p><%= order.order_num %></p>
+      <span class="price">
+        <%= order.price %>
+      </span>
+  <% end %>
+</div>
+</main>
