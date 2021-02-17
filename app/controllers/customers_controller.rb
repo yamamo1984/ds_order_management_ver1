@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   def index
-    
+    @customer = Customer.all
   end  
 
   def new
@@ -15,6 +15,26 @@ class CustomersController < ApplicationController
       render :new
     end   
   end
+
+  def edit
+    @customer = Customer.find(params[:id])
+  end
+
+  def update
+    customer = Customer.find(params[:id])
+    customer.update(customer_params)
+     if customer.save
+       redirect_to customers_path
+    else  
+      render :edit
+    end   
+  end  
+
+  def destroy
+    customer = Customer.find(params[:id])
+    customer.destroy
+  end  
+  
 
   private
   def customer_params
