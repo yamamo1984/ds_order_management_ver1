@@ -1,0 +1,30 @@
+<%= form_with model: @order, url: orders_path, local: true do |f| %>
+  <div class="field">
+    <%= f.label :order_num, "注文番号" %><br />
+    <%= f.text_field :order_num %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hoge, "顧客" %><br />
+    <%= f.text_field :hoge, class: :form__text %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hoge, "商品" %><br />
+    <%= f.text_field :hoge %>
+  </div>
+
+  <div class="field">
+    <%= f.label :purchase_num, "数量" %><br />
+    <%= f.text_field :purchase_num %>
+  </div>
+
+  <div class="field">
+    <%= f.label :price, "価格" %><br />
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "保存する", class: :form__btn  %>
+  </div>
+<% end %>

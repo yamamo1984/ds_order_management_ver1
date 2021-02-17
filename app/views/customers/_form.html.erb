@@ -1,0 +1,60 @@
+<%= form_with model: @customer, url: customers_path, local: true do |f| %>
+  <div class="field">
+    <%= f.label :last_name, "性" %><br />
+    <%= f.text_field :last_name %>
+  </div>
+
+   <div class="field">
+    <%= f.label :first_name, "名" %><br />
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :company, "会社名" %><br />
+    <%= f.text_field :company, class: :form__text %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, "E-mail" %><br />
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tel, "TEL" %><br />
+    <%= f.text_field :tel %>
+  </div>
+
+  <div class="field">
+    <%= f.label :post_code, "郵便番号" %><br />
+    <%= f.text_field :post_code %>
+  </div>
+   
+   <P>都道府県</p>
+   <div class="field"> 
+   <%= f.collection_select(:place_id, Place.all, :id, :name, {}, {class:"place-select"}) %> 
+   </div>
+
+  <div class="field">
+  <%= f.label :city, "市町村" %><br />
+  <%= f.text_field :city %>
+  </div>
+
+  <div class="field">
+  <%= f.label :street_num, "番地" %><br />
+  <%= f.text_field :street_num %>
+  </div>
+
+  <div class="field">
+  <%= f.label :building, "建物名" %><br />
+  <%= f.text_field :building %>
+  </div>
+
+  <div class="field">
+  <%= f.label :memo, "メモ" %><br />
+  <%= f.text_area :memo %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "保存する", class: :form__btn  %>
+  </div>
+<% end %>
