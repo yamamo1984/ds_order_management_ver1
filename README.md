@@ -59,12 +59,14 @@
 
 | Column           | Type        | Options                        |
 | ---------------- | ----------  | ------------------------------ |
-| order_num        | string      | null: false                    |
-| trucking_num     | string      |                                |
-| shipment_company | string      |                                |
+| order_num        | string      | null: false,unique: true       |
+| shipment_company | integer     | null: false                    |
+| price            | integer     | null: false                    |
+| purchase_num     | integer     | null: false                    |
 | user             | references  | null: false,foreign_key: true  |
 | customer         | references  | null: false,foreign_key: true  |
 | item             | references  | null: false,foreign_key: true  |
+| trucking_num     | references  | null: false,foreign_key: true  |
 
 ### Association
 
@@ -75,7 +77,7 @@
 - has_many :order_items
 - has_many :items, trough: :order_items
 
-## orders_items テーブル
+## order_items テーブル
 
 | Column     | Type        | Options                        |
 | ---------- | ----------  | ------------------------------ |
@@ -101,6 +103,17 @@
 | street_num        | string      | null: false                    |
 | building          | string      |                                |
 | memo              | text        |                                |  
+
+### Association
+
+- belongs_to :order
+
+## trucking_num テーブル
+
+| Column     | Type        | Options                        |
+| ---------- | ----------  | ------------------------------ |
+| num        | text        | null: false, unique: true      |
+| order      | references  | null: false, foreign_key: true |
 
 ### Association
 
