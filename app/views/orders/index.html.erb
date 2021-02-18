@@ -15,12 +15,10 @@
        <%# <span><%= image_tag 'arrow_top.png' %></span>
         <ul class="more_list">
           <li>
-            <%= link_to '編集', edit_order_path(order.id), method: :get %>
-          </li>
-          <li>
-            <%= link_to '削除', order_path(order.id), method: :delete %>
-          </li>
+          <%= link_to "詳細", order_path(order.id), method: :get, class: :link__btn %>
+        </li>
         </ul>
+        
       </div>
       <p><%= order.order_num %></p>
       <span class="price">

@@ -15,15 +15,9 @@
       <div class="more">
        <%# <span><%= image_tag 'arrow_top.png' %></span>
         <ul class="more_list">
-          <li>
-            <%= link_to '詳細', customer_path(customer.id), method: :get %>
-          </li>
-          <li>
-            <%= link_to '編集', edit_customer_path(customer.id), method: :get %>
-          </li>
-          <li>
-            <%= link_to '削除', customer_path(customer.id), method: :delete %>
-          </li>
+        <li>
+          <%= link_to "詳細", customer_path(customer.id), method: :get, class: :link__btn %>
+        </li>
         </ul>
       </div>
       <p><%= customer.company %></p>

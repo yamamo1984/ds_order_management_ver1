@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :set_order, only: [:edit, :show]
+
   def index
     @order = Order.all
   end   
@@ -17,7 +19,6 @@ class OrdersController < ApplicationController
   end
 
   def edit
-    @order = Order.find(params[:id])
   end
 
   def update
@@ -34,10 +35,18 @@ class OrdersController < ApplicationController
     order = Order.find(params[:id])
     order.destroy
   end  
+
+  def show
+  end  
   
   private
   def order_params
     params.require(:order).permit(:order_num, :purchase_num, :price).merge(user_id: current_user.id)
   end
+
+  def set_order
+    @order = Order.find(params[:id])
+  end  
+
   
 end
