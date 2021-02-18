@@ -197,6 +197,13 @@ a {
   justify-content: center;
   padding-top: 16px;
 }
+
+.customer__detail{
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
+}
+
 .prototype__btn{
   display: block;
   padding: 0.4em 1.6em;

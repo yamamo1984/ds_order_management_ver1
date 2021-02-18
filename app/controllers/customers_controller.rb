@@ -1,4 +1,6 @@
 class CustomersController < ApplicationController
+  before_action :set_customer, only: [:edit, :show]
+
   def index
     @customer = Customer.all
   end  
@@ -17,7 +19,6 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find(params[:id])
   end
 
   def update
@@ -34,10 +35,18 @@ class CustomersController < ApplicationController
     customer = Customer.find(params[:id])
     customer.destroy
   end  
+
+  def show
+  end 
+
   
 
   private
   def customer_params
     params.require(:customer).permit(:first_name, :last_name, :company, :email, :tel, :post_code, :city, :street_num, :building, :memo, :place_id)
   end
+
+  def set_customer
+    @customer = Customer.find(params[:id])
+  end  
 end

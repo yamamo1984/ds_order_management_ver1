@@ -9,11 +9,15 @@
         <% end %>
 
 <h1>顧客一覧</h1>
+<%= link_to "新規顧客", new_customer_path , class: :nav__btn %>
 <div class="contents row">
   <% @customer.each do |customer| %>  
       <div class="more">
        <%# <span><%= image_tag 'arrow_top.png' %></span>
         <ul class="more_list">
+          <li>
+            <%= link_to '詳細', customer_path(customer.id), method: :get %>
+          </li>
           <li>
             <%= link_to '編集', edit_customer_path(customer.id), method: :get %>
           </li>
