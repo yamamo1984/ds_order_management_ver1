@@ -2,10 +2,10 @@
   <div class="inner">
     <div class="prototype__wrapper">
       <p class="-prototype__hedding">
-        <%= @order.customer.company %>様
+        <%= "" %>様
       </p>
        <p class="customer__hedding">
-        <%= @order.customer.last_name + @order.customer.first_name %>
+        <%= ""%>
       </p>
       <%= link_to "by プロトタイプの投稿者", root_path, class: :prototype__user %>
       <%# プロトタイプの投稿者とログインしているユーザーが同じであれば以下を表示する %>
@@ -22,36 +22,30 @@
           <p class="detail__title">注文詳細</p>
         </div>
         <div class="customer__detail">
-          <P>注文者：</p><%= @order.customer.company %><%= @order.customer.last_name = @order.customer.first_name %>
+          <P>注文番号：</p><%= @order.order_num %>
         </div>
         <div class="customer__detail">
-          <P>担当者名：</p><%= @order.customer.last_name + @order.customer.first_name %>
+          <P>商品コード：</p><%= "" %>
         </div>
         <div class="customer__detail">
-          <P>購入者住所：</p> <P>〒</p><%= @order.customer.post_code %>
+          <P>商品名：</p><%= "" %>
         </div>
-          <div class="customer__detail">
-            <P><%= @order.customer.place.name %></p>
-            <P><%= @order.customer.city %></p>
-            <P><%= @order.customer.street_num %></p>
-            <P><%= @order.customer.building %></p>
-          </div>  
-        </div>  
-
+        <div class="customer__detail">
+          <P>数量：</p><%= @order.purchase_num %>
+        </div>
+        <div class="customer__detail">
+          <P>価格：</p><%= @order.price %>
+        </div>
+        <div class="customer__detail">
+          <P>配送業者：</p><%= "" %>
+        </div>
          <div class="customer__detail">
-          <P>送り先住所：</p><%= "送り先住所" %>
+          <P>備考：</p><%= "" %>
         </div>
+       
 
-      
-        <div class="customer__detail">
-          <P>TEL：</p><%= @order.customer.tel %>
-        </div>
-        <div class="customer__detail">
-          <P>Mail：</p><%= @order.customer.email %>
-        </div>
-        <div class="customer__detail">
-          <P>備考：</p><%= @order.memo %>
-        </div>
+         
+        
 
         <div class="prototype__manage">
           <%= link_to "一覧に戻る", orders_path, class: :prototype__btn %>
