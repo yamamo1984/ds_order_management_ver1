@@ -45,11 +45,11 @@
 | ----------------- | ----------  | -------------------------------|
 | code              | string      | null: false                    |
 | name              | string      | null: false                    |
-| condition_id      | integer     | null: false                    |
 | price             | integer     | null: false                    |
 | color             | string      |                                |
 | size              | string      |                                |
 | stock_num         | integer     | null: false                    |
+| memo              | text        |                                |
 
 
 ### Association

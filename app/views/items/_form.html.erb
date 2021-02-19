@@ -1,0 +1,41 @@
+<%= form_with model: @item, url: items_path, local: true do |f| %>
+  <div class="field">
+    <%= f.label :code, "商品コード" %><br />
+    <%= f.text_field :code %>
+  </div>
+
+   <div class="field">
+    <%= f.label :name, "商品名" %><br />
+    <%= f.text_field :name %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :price, "商品単価" %><br />
+    <%= f.text_field :price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :color, "カラー" %><br />
+    <%= f.text_field :color %>
+  </div>
+
+  <div class="field">
+    <%= f.label :size, "サイズ" %><br />
+    <%= f.text_field :size %>
+  </div>
+
+  <div class="field">
+  <%= f.label :stock_num, "在庫" %><br />
+  <%= f.text_field :stock_num %>
+  </div>
+
+  <div class="field">
+  <%= f.label :memo, "メモ" %><br />
+  <%= f.text_area :memo %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "保存する", class: :form__btn  %>
+  </div>
+<% end %>
