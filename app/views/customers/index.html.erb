@@ -9,23 +9,23 @@
         <% end %>
 
 <h1>顧客一覧</h1>
+<%= link_to "新規顧客", new_customer_path , class: :nav__btn %>
 <div class="contents row">
   <% @customer.each do |customer| %>  
       <div class="more">
        <%# <span><%= image_tag 'arrow_top.png' %></span>
         <ul class="more_list">
-          <li>
-            <%= link_to '編集', edit_order_path(order.id), method: :get %>
-          </li>
-          <li>
-            <%= link_to '削除', order_path(order.id), method: :delete %>
-          </li>
+        <li>
+          <%= link_to "詳細", customer_path(customer.id), method: :get, class: :link__btn %>
+        </li>
         </ul>
       </div>
-      <p><%= order.order_num %></p>
-      <span class="price">
-        <%= order.price %>
-      </span>
+      <% if customer.company == "" %>
+      <p><%= customer.last_name + customer.first_name %></p>
+      <% else %>
+      <p><%= customer.company %></p>
+      <% end %>
+  
   <% end %>
 </div>
 </main>

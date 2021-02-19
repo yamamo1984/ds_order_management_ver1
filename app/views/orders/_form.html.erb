@@ -1,17 +1,13 @@
 <%= form_with model: @order, url: orders_path, local: true do |f| %>
   <div class="field">
+
+  <h3>注文情報の入力</h3> 
     <%= f.label :order_num, "注文番号" %><br />
     <%= f.text_field :order_num %>
   </div>
-
-  <div class="field">
-    <%= f.label :hoge, "顧客" %><br />
-    <%= f.text_field :hoge, class: :form__text %>
-  </div>
-
-  <div class="field">
-    <%= f.label :hoge, "商品" %><br />
-    <%= f.text_field :hoge %>
+  <P>購入者（選択してください）</p>
+  <div class="field"> 
+   <%= f.collection_select(:customer_id, Customer.all, :id, :company, {}, {class:"place-select"}) %> 
   </div>
 
   <div class="field">
@@ -22,6 +18,63 @@
   <div class="field">
     <%= f.label :price, "価格" %><br />
     <%= f.text_field :price %>
+  </div>
+
+  <h3>配送住所の入力</h3> 
+
+  <div class="field">
+    <%= f.label :first_name, "姓" %><br />
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name, "名" %><br />
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :company, "会社名" %><br />
+    <%= f.text_field :company %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tel, "電話番号" %><br />
+    <%= f.text_field :tel %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, "Email（任意）" %><br />
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :post_code, "郵便番号（ハイフンあり）" %><br />
+    <%= f.text_field :post_code %>
+  </div>
+
+    <P>都道府県</p>
+  <div class="field"> 
+   <%= f.collection_select(:place_id, Place.all, :id, :name, {}, {class:"place-select"}) %> 
+  </div>
+  
+  <div class="field">
+    <%= f.label :city, "市" %><br />
+    <%= f.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= f.label :street_num, "番地" %><br />
+    <%= f.text_field :street_num %>
+  </div>
+
+  <div class="field">
+    <%= f.label :building, "建物名" %><br />
+    <%= f.text_field :building %>
+  </div>
+
+    <div class="field">
+    <%= f.label :memo, "備考" %><br />
+    <%= f.text_area :memo %>
   </div>
 
   <div class="actions">

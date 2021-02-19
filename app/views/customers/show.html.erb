@@ -2,16 +2,16 @@
   <div class="inner">
     <div class="prototype__wrapper">
       <p class="-prototype__hedding">
-        <%= "" %>様
+        <%= @customer.last_name + @customer.first_name %>様
       </p>
        <p class="customer__hedding">
-        <%= ""%>
+        <%= @customer.company %>
       </p>
       <%= link_to "by プロトタイプの投稿者", root_path, class: :prototype__user %>
       <%# プロトタイプの投稿者とログインしているユーザーが同じであれば以下を表示する %>
         <div class="prototype__manage">
-          <%= link_to "編集する", edit_order_path(@order.id), method: :get, class: :prototype__btn %>
-          <%= link_to "削除する", order_path(@order.id), method: :delete, class: :prototype__btn %>
+          <%= link_to "編集する", edit_customer_path(@customer.id), method: :get, class: :prototype__btn %>
+          <%= link_to "削除する", customer_path(@customer.id), method: :delete, class: :prototype__btn %>
         </div>
       <%# // プロトタイプの投稿者とログインしているユーザーが同じであれば上記を表示する %>
       <div class="prototype__image">
@@ -19,39 +19,36 @@
       </div>
       <div class="prototype__body">
         <div class="prototype__detail">
-          <p class="detail__title">注文詳細</p>
+          <p class="detail__title">顧客詳細</p>
         </div>
         <div class="customer__detail">
-          <P>注文番号：</p><%= @order.order_num %>
+          <P>会社名：</p><%= @customer.company %>
         </div>
         <div class="customer__detail">
-          <P>注文者：</p><%= @order.customer.company %>
+          <P>担当者名：</p><%= @customer.last_name + @customer.first_name %>
         </div>
         <div class="customer__detail">
-          <P>商品コード：</p><%= "" %>
+          <P>所在地：</p> <P>〒</p><%= @customer.post_code %>
+        </div>
+          <div class="customer__detail">
+            <P><%= @customer.place.name %></p>
+            <P><%= @customer.city %></p>
+            <P><%= @customer.street_num %></p>
+            <P><%= @customer.building %></p>
+          </div>  
+        </div>  
+        <div class="customer__detail">
+          <P>TEL：</p><%= @customer.tel %>
         </div>
         <div class="customer__detail">
-          <P>商品名：</p><%= "" %>
+          <P>Mail：</p><%= @customer.email %>
         </div>
         <div class="customer__detail">
-          <P>数量：</p><%= @order.purchase_num %>
+          <P>備考：</p><%= @customer.memo %>
         </div>
-        <div class="customer__detail">
-          <P>価格：</p><%= @order.price %>
-        </div>
-        <div class="customer__detail">
-          <P>配送業者：</p><%= "" %>
-        </div>
-         <div class="customer__detail">
-          <P>備考：</p><%= "" %>
-        </div>
-       
-
-         
-        
 
         <div class="prototype__manage">
-          <%= link_to "一覧に戻る", orders_path, class: :prototype__btn %>
+          <%= link_to "一覧に戻る", customers_path, class: :prototype__btn %>
         </div>
         
       </div>

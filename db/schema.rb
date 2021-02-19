@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_17_074410) do
+ActiveRecord::Schema.define(version: 2021_02_19_011622) do
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name", null: false
@@ -33,7 +33,28 @@ ActiveRecord::Schema.define(version: 2021_02_17_074410) do
     t.integer "purchase_num", null: false
     t.integer "price", null: false
     t.bigint "user_id", null: false
+    t.bigint "customer_id", null: false
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "ship_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "company"
+    t.string "tel", null: false
+    t.string "post_code", null: false
+    t.integer "place_id", null: false
+    t.string "city", null: false
+    t.string "street_num", null: false
+    t.string "building"
+    t.text "memo"
+    t.bigint "customer_id", null: false
+    t.bigint "order_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_ship_addresses_on_customer_id"
+    t.index ["order_id"], name: "index_ship_addresses_on_order_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -52,4 +73,6 @@ ActiveRecord::Schema.define(version: 2021_02_17_074410) do
   end
 
   add_foreign_key "orders", "users"
+  add_foreign_key "ship_addresses", "customers"
+  add_foreign_key "ship_addresses", "orders"
 end

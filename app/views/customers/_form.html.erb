@@ -1,6 +1,6 @@
 <%= form_with model: @customer, url: customers_path, local: true do |f| %>
   <div class="field">
-    <%= f.label :last_name, "性" %><br />
+    <%= f.label :last_name, "姓" %><br />
     <%= f.text_field :last_name %>
   </div>
 
@@ -10,7 +10,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :company, "会社名" %><br />
+    <%= f.label :company, "会社名 ※会社名がない場合は担当者名を入力" %><br />
     <%= f.text_field :company, class: :form__text %>
   </div>
 
