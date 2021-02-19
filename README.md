@@ -30,10 +30,12 @@
 | city              | string      | null: false                    |    
 | street_num        | string      | null: false                    |
 | building          | string      |                                |
-| memo              | text        |                                |  
+| memo              | text        |                                | 
+| ship_address      | references  | null: false,foreign_key: true  | 
 
 ### Association
 
+- has_many :ship_addresses
 - has_many :orders
 
 
@@ -67,6 +69,7 @@
 | customer         | references  | null: false,foreign_key: true  |
 | item             | references  | null: false,foreign_key: true  |
 | trucking_num     | references  | null: false,foreign_key: true  |
+| ship_address     | references  | null: false,foreign_key: true  |
 
 ### Association
 
@@ -99,13 +102,15 @@
 | tel               | string      | null: false                    |
 | post_code         | string      | null: false                    |
 | place_id          | integer     | null: false                    |
-| city              | string      | null: false                    |    
+| city              | string      | null: false                    | 
 | street_num        | string      | null: false                    |
 | building          | string      |                                |
 | memo              | text        |                                |  
+| customer          | references  | null: false,foreign_key: true  | 
+| order             | references  | null: false,foreign_key: true  | 
 
 ### Association
-
+- belongs_to :customer
 - belongs_to :order
 
 ## trucking_num テーブル

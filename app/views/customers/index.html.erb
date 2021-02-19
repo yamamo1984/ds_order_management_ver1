@@ -20,7 +20,11 @@
         </li>
         </ul>
       </div>
+      <% if customer.company == "" %>
+      <p><%= customer.last_name + customer.first_name %></p>
+      <% else %>
       <p><%= customer.company %></p>
+      <% end %>
   
   <% end %>
 </div>

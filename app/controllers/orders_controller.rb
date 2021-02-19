@@ -6,11 +6,11 @@ class OrdersController < ApplicationController
   end   
   
   def new
-    @order = Order.new
+    @order = OrderShipAddress.new
   end
 
   def create
-    @order = Order.create(order_params)
+    @order = OrderShipAddress.new(order_params)
     if @order.save
       redirect_to orders_path(@order)
     else  
@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
   
   private
   def order_params
-    params.require(:order).permit(:order_num, :purchase_num, :price).merge(user_id: current_user.id)
+    params.require(:order_ship_address).permit(:order_num, :purchase_num, :price, :customer_id, :first_name, :last_name, :company, :tel, :post_code, :place_id, :city, :street_num, :building, :memo).merge(user_id: current_user.id)
   end
 
   def set_order
@@ -49,4 +49,4 @@ class OrdersController < ApplicationController
   end  
 
   
-end
+end 
