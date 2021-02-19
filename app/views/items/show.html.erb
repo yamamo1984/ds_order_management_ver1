@@ -1,0 +1,76 @@
+<main class="main">
+  <div class="inner">
+    <div class="prototype__wrapper">
+      <p class="-prototype__hedding">
+        <%#= @customer.last_name + @customer.first_name %>
+      </p>
+       <p class="customer__hedding">
+        <%= @item.code %>
+      </p>
+      <%= link_to "by プロトタイプの投稿者", root_path, class: :prototype__user %>
+      <%# プロトタイプの投稿者とログインしているユーザーが同じであれば以下を表示する %>
+        <div class="prototype__manage">
+          <%= link_to "編集する", edit_item_path(@item.id), method: :get, class: :prototype__btn %>
+          <%= link_to "削除する", item_path(@item.id), method: :delete, class: :prototype__btn %>
+        </div>
+      <%# // プロトタイプの投稿者とログインしているユーザーが同じであれば上記を表示する %>
+      <div class="prototype__image">
+        <%#= image_tag "プロトタイプの画像" %>
+      </div>
+      <div class="prototype__body">
+        <div class="prototype__detail">
+          <p class="detail__title">商品詳細</p>
+        </div>
+        <div class="customer__detail">
+          <P>商品コード：</p><%= @item.code %>
+        </div>
+        <div class="customer__detail">
+          <P>商品名：</p><%= @item.name %>
+        </div>
+        <div class="customer__detail">
+          <P>価格：</p><%= @item.price %>
+        </div>
+        </div>  
+        <div class="customer__detail">
+          <P>カラー：</p><%= @item.color %>
+        </div>
+        <div class="customer__detail">
+          <P>サイズ：</p><%= @item.size %>
+        </div>
+        <div class="customer__detail">
+          <P>在庫：</p><%= @item.stock_num %>
+        </div>
+        <div class="customer__detail">
+          <P>備考：</p><%= @item.memo %>
+        </div>
+    
+
+        <div class="prototype__manage">
+          <%= link_to "一覧に戻る", items_path, class: :prototype__btn %>
+        </div>
+        
+      </div>
+      <div class="prototype__comments">
+        <%# ログインしているユーザーには以下のコメント投稿フォームを表示する %>
+          <%# <%= form_with local: true do |f|%>
+            <div class="field">
+              <%# <%= f.label :hoge, "コメント" %><br />
+              <%# <%= f.text_field :hoge %>
+            </div>
+            <div class="actions">
+              <%# <%= f.submit "送信する", class: :form__btn  %>
+            </div>
+          <%# <% end %> 
+        <%# // ログインしているユーザーには上記を表示する %>
+        <ul class="comments_lists">
+          <%# 投稿に紐づくコメントを一覧する処理を記述する %>
+            <li class="comments_list">
+              <%# <%= " コメントのテキスト "%>
+              <%# <%= link_to "（ ユーザー名 ）", root_path, class: :comment_user %>
+            </li>
+          <%# // 投稿に紐づくコメントを一覧する処理を記述する %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
