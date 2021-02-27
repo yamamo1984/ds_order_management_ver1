@@ -3,6 +3,7 @@ class OrdersController < ApplicationController
 
   def index
     @order = Order.all
+ 
   end   
   
   def new
@@ -37,6 +38,7 @@ class OrdersController < ApplicationController
   end  
 
   def show
+    
   end  
   
   private
@@ -44,6 +46,10 @@ class OrdersController < ApplicationController
     params.require(:order_ship_address).permit(:order_num, :purchase_num, :price, :customer_id, :first_name, :last_name, :company, :tel, :post_code, :place_id, :city, :street_num, :building, :memo).merge(user_id: current_user.id)
   end
 
+  
+
+
+  
   def set_order
     @order = Order.find(params[:id])
   end  

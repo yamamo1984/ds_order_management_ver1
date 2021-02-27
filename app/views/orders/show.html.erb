@@ -10,7 +10,7 @@
       <%= link_to "by プロトタイプの投稿者", root_path, class: :prototype__user %>
       <%# プロトタイプの投稿者とログインしているユーザーが同じであれば以下を表示する %>
         <div class="prototype__manage">
-          <%= link_to "編集する", edit_order_path(@order.id), method: :get, class: :prototype__btn %>
+          <%= link_to "編集する", edit_order_path( @order.id), method: :get, class: :prototype__btn %>
           <%= link_to "削除する", order_path(@order.id), method: :delete, class: :prototype__btn %>
         </div>
       <%# // プロトタイプの投稿者とログインしているユーザーが同じであれば上記を表示する %>
@@ -31,7 +31,7 @@
           <P>商品コード：</p><%= "" %>
         </div>
         <div class="customer__detail">
-          <P>商品名：</p><%= "" %>
+          <P>商品名：</p><%= '' %>
         </div>
         <div class="customer__detail">
           <P>数量：</p><%= @order.purchase_num %>
@@ -43,8 +43,12 @@
           <P>配送業者：</p><%= "" %>
         </div>
          <div class="customer__detail">
-          <P>備考：</p><%= "" %>
-        </div>
+          <P>備考：</p><%= ''%>
+         </div>  
+
+        <%= render partial: 'ship_address' %>
+      
+       
        
 
          
