@@ -2,7 +2,7 @@
   <div class="inner">
     <div class="form__wrapper">
       <h2 class="page-heading">注文編集</h2>
-      <%= form_with(model:  [@order, @ship_address], local: true) do |f| %>
+      <%= form_with model: @order, local: true do |f| %>
       <%= render partial: 'form', locals: { form: f} %>
       <% end %>
     </div>

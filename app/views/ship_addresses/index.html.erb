@@ -1,0 +1,30 @@
+<main class="main">
+  <div class="inner">
+       <p class="-prototype__hedding">
+        <%#= @customer.last_name + @customer.first_name %>様
+      </p>
+       <p class="customer__hedding">
+        <%#= @customer.company %>
+      </p>
+
+<h1>顧客一覧</h1>
+<%= link_to "新規配送先", "" , class: :nav__btn %>
+<div class="contents row">
+  <% @ship_address.each do |ship_address| %>  
+      <div class="more">
+       <%# <span><%= image_tag 'arrow_top.png' %></span>
+        <ul class="more_list">
+        <li>
+          <%= link_to "詳細", "", method: :get, class: :link__btn %>
+        </li>
+        </ul>
+      </div>
+      <% if ship_address.company == "" %>
+      <p><%= ship_address.last_name + ship_address.first_name %></p>
+      <% else %>
+      <p><%= ship_address.company %></p>
+      <% end %>
+  
+  <% end %>
+</div>
+</main>

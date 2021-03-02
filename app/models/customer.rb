@@ -9,7 +9,7 @@ class Customer < ApplicationRecord
 
   
 
-   with_options format: { with: /\A[ぁ-んァ-ヶ一-龥々]+\z/, message: 'は全角文字を使用してください' } do
+   with_options format: { with: /\A[ぁ-んァ-ヶ一-龥々０-９]+\z/, message: 'は全角文字を使用してください' } do
     validates :first_name
     validates :last_name
   end 

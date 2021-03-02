@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "orders#index"
-  resources :customers
-  resources :orders do
+  resources :customers do
     resources :ship_addresses
-  end  
+  end
+  resources :orders
+  
   resources :items
 end

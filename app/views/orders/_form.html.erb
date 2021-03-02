@@ -10,6 +10,7 @@
    <%= f.collection_select(:customer_id, Customer.all, :id, :company, {}, {class:"place-select"}) %> 
   </div>
 
+
   <div class="field">
     <%= f.label :purchase_num, "数量" %><br />
     <%= f.text_field :purchase_num %>
@@ -21,6 +22,7 @@
   </div>
 
   <h3>配送住所の入力</h3> 
+
 
   <div class="field">
     <%= f.label :first_name, "姓" %><br />
