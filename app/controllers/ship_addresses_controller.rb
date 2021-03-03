@@ -1,6 +1,7 @@
 class ShipAddressesController < ApplicationController
+  before_action :set_ship_address, only: [:index, :new, :show, :edit, :update]
   def index
-    @customer_id = params[:customer_id]
+    #顧客の配送先一覧を取得するための記述
     @ship_address = ShipAddress.where(customer_id: @customer_id)
   end  
 
@@ -11,12 +12,40 @@ class ShipAddressesController < ApplicationController
   def create
     @ship_address = ShipAddress.new(ship_address_params)
     if @ship_address.save
-       redirect_to ship_address_path(@ship_address)
+       redirect_to customer_ship_addresses_path
     end  
   end   
 
   def show
-    @ship_address = ShipAddress.where(params[:id])
+    @ship_address = ShipAddress.find(params[:id])
+  end  
+
+  def edit
+    @ship_address = ShipAddress.find(params[:id])
+
+  end  
+
+  def update
+    ship_address = ShipAddress.find(params[:id])
+    ship_address.update(ship_address_params)
+     if ship_address.save
+       redirect_to customer_ship_addresses_path
+    else  
+      render :edit
+    end   
+  end  
+
+
+  private
+  def ship_address_params
+    params.require(:ship_address).permit(:ship_address_num, :first_name, :last_name, :company, :tel, :post_code, :place_id, :city, :street_num, :building, :memo).merge(customer_id: params[:customer_id])
+  end
+
+  def set_ship_address
+    @customer_id = params[:customer_id]
+    @customer = Customer.find(@customer_id)
+
+    
   end  
 
 end

@@ -75,7 +75,7 @@
 
 - belongs_to :user
 - belongs_to :customer
-- has_one :ship_address
+- belongs_to :ship_address
 - has_many :comments
 - has_many :order_items
 - has_many :items, trough: :order_items
@@ -96,6 +96,7 @@
 
 | Column            | Type        | Options                        |
 | ----------------  | ----------  | ------------------------------ |
+| num               | integer     | null: false                    |
 | first_name        | string      | null: false                    |
 | last_name         | string      | null: false                    |
 | company           | string      |                                |
@@ -111,7 +112,7 @@
 
 ### Association
 - belongs_to :customer
-- belongs_to :order
+- has_many :orders
 
 ## trucking_num テーブル
 

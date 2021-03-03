@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_19_071954) do
+ActiveRecord::Schema.define(version: 2021_03_02_040113) do
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name", null: false
@@ -46,7 +46,9 @@ ActiveRecord::Schema.define(version: 2021_02_19_071954) do
     t.integer "price", null: false
     t.bigint "user_id", null: false
     t.bigint "customer_id", null: false
+    t.bigint "ship_address_id", null: false
     t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["ship_address_id"], name: "index_orders_on_ship_address_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -62,11 +64,10 @@ ActiveRecord::Schema.define(version: 2021_02_19_071954) do
     t.string "building"
     t.text "memo"
     t.bigint "customer_id", null: false
-    t.bigint "order_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "ship_address_num", null: false
     t.index ["customer_id"], name: "index_ship_addresses_on_customer_id"
-    t.index ["order_id"], name: "index_ship_addresses_on_order_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -86,5 +87,4 @@ ActiveRecord::Schema.define(version: 2021_02_19_071954) do
 
   add_foreign_key "orders", "users"
   add_foreign_key "ship_addresses", "customers"
-  add_foreign_key "ship_addresses", "orders"
 end

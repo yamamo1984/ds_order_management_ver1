@@ -1,21 +1,21 @@
 <main class="main">
   <div class="inner">
        <p class="-prototype__hedding">
-        <%#= @customer.last_name + @customer.first_name %>様
+        <%= @customer.last_name + @customer.first_name %>様
       </p>
        <p class="customer__hedding">
-        <%#= @customer.company %>
+        <%= @customer.company %>
       </p>
 
-<h1>顧客一覧</h1>
-<%= link_to "新規配送先", "" , class: :nav__btn %>
+<h1>配送先一覧</h1>
+<%= link_to "新規配送先", new_customer_ship_address_path , class: :nav__btn %>
 <div class="contents row">
   <% @ship_address.each do |ship_address| %>  
       <div class="more">
        <%# <span><%= image_tag 'arrow_top.png' %></span>
         <ul class="more_list">
         <li>
-          <%= link_to "詳細", "", method: :get, class: :link__btn %>
+          <%= link_to "詳細", customer_ship_address_path(@customer_id, ship_address.id), method: :get, class: :link__btn %>
         </li>
         </ul>
       </div>
@@ -26,5 +26,8 @@
       <% end %>
   
   <% end %>
+  <div class="prototype__manage">
+    <%= link_to "顧客詳細に戻る", customer_path(@customer.id), class: :prototype__btn %>
+  </div>
 </div>
 </main>
