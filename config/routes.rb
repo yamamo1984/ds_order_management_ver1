@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :ship_addresses
   end
   resources :orders
+  resources :add_orders 
   
-  resources :items
+  resources :items, only: [:new, :create]
 end
