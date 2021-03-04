@@ -32,7 +32,13 @@ class ShipAddressesController < ApplicationController
        redirect_to customer_ship_addresses_path
     else  
       render :edit
-    end   
+  end   
+
+  def destroy
+    ship_address = ShipAddress.find(params[:id])
+    ship_address.destroy
+  end  
+
   end  
 
 
