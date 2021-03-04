@@ -3,7 +3,7 @@
     <div class="form__wrapper">
       <h2 class="page-heading">注文編集</h2>
       <%= form_with model: @order, local: true do |f| %>
-      <%= render partial: 'form', locals: { form: f} %>
+      <%= render partial: 'form_for_edit', locals: { form: f} %>
       <% end %>
     </div>
   </div>
