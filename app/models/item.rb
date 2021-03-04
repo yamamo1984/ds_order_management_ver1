@@ -7,4 +7,5 @@ class Item < ApplicationRecord
     validates :size
     validates :stock_num
   end
+    has_many :orders, through: :order_items
 end

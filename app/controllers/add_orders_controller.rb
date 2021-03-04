@@ -6,7 +6,7 @@ class AddOrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    if @order.save
+    if @order.save 
       redirect_to orders_path(@order)
     else  
       render :new

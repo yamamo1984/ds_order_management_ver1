@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   resources :orders
   resources :add_orders 
   
-  resources :items, only: [:new, :create]
+  resources :items
 end
