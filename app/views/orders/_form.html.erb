@@ -7,7 +7,7 @@
   </div>
   <P>購入者（選択してください）</p>
   <div class="field"> 
-   <%= f.collection_select(:customer_id, Customer.all, :id, :company, {}, {class:"place-select"}) %> 
+   <%= f.collection_select(:, Customer.all, :id, :company, {}, {class:"place-select"}) %> 
   </div>
 
    <P>商品１（選択してください）</p>
