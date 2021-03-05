@@ -56,7 +56,9 @@ ActiveRecord::Schema.define(version: 2021_03_04_145248) do
     t.bigint "user_id", null: false
     t.bigint "customer_id", null: false
     t.bigint "ship_address_id", null: false
+    t.bigint "item_id", null: false
     t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["item_id"], name: "index_orders_on_item_id"
     t.index ["ship_address_id"], name: "index_orders_on_ship_address_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end

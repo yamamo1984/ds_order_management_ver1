@@ -10,6 +10,11 @@
    <%= f.collection_select(:customer_id, Customer.all, :id, :company, {}, {class:"place-select"}) %> 
   </div>
 
+   <P>商品１（選択してください）</p>
+  <div class="field"> 
+   <%= f.collection_select(:customer_i, Customer.all, :id, :company, {}, {class:"place-select"}) %> 
+  </div>
+
 
   <div class="field">
     <%= f.label :purchase_num, "数量" %><br />
