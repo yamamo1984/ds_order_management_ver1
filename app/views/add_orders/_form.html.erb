@@ -11,17 +11,46 @@
   </div>
 
 
-  <div class="field">
-    <%= f.label :purchase_num, "数量" %><br />
-    <%= f.text_field :purchase_num %>
+  <P>ーーーー商品１ーーーーー</p>
+  <P>商品１（選択してください）</p>
+  <%# name: "item_ids[]" のHTMLオプションを使用してコレクションセレクトで配列形式でデータを送る %>
+  <div class="field"> 
+    <%= f.collection_select(:item_id, Item.all, :id, :name, {}, { name: "item_ids[]", class:"place-select"}) %>
   </div>
+
+  <P>単価1</p>
+  単価を表示
+
+  <P>数量1（数量を入力してください）</p>
+  <div class="field">
+    <input name = "purchase_nums[]", type = "text" />
+  </div>
+
+
+  <P>ーーーー商品２ーーーーー</p>
+   <P>商品２（選択してください）</p>
+
+  <div class="field">
+      <%= f.collection_select(:item_id, Item.all, :id, :name, {}, { name: "item_ids[]",class:"place-select"}) %>
+  </div>
+
+  <P>単価2</p>
+  単価を表示
+
+   <P>数量2（数量を入力してください）</p>
+  <div class="field">
+    <input name = "purchase_nums[]", type = "text" />
+  </div>
+
+
+<P>ーーーー合計額ーーーーー</p>
 
   <div class="field">
     <%= f.label :price, "価格" %><br />
     <%= f.text_field :price %>
   </div>
-
-  <h3>配送住所の選択</h3> 
+  
+<h3>配送住所の選択</h3> 
 
 
   <div class="field"> 
