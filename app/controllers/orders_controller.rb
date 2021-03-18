@@ -27,13 +27,11 @@ class OrdersController < ApplicationController
       @order.item_id = i
       @order.save! 
     end  
-    if @order.save 
+    if @order.save && @order.ship_save
       redirect_to orders_path(@order)
     else  
       render :new
     end   
-
-    
   end
 
   def edit

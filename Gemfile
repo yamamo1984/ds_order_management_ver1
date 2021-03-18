@@ -62,3 +62,5 @@ gem 'devise'
 gem 'pry-rails'
 
 gem 'active_hash'
+gem 'bootstrap', '~> 4.1.1'
+gem 'jquery-rails'
