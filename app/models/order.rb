@@ -2,7 +2,11 @@ class Order < ApplicationRecord
 
   belongs_to :user
   belongs_to :customer
-  has_one :ship_address, dependent: :destroy
+  belongs_to :ship_address
+  has_many :order_items
+  has_many :items, through: :order_items
+  
+
 
 
 end

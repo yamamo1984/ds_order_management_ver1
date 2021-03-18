@@ -1,0 +1,10 @@
+<div class="main">
+  <div class="inner">
+    <div class="form__wrapper">
+      <h2 class="page-heading">配送先編集</h2>
+      <%= form_with model: [@customer, @ship_address], local: true do |f| %>
+      <%= render partial: 'form', locals: { form: f} %>
+      <% end %>
+    </div>
+  </div>
+</div>

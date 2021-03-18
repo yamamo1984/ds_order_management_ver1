@@ -9,18 +9,93 @@
   <div class="field"> 
    <%= f.collection_select(:customer_id, Customer.all, :id, :company, {}, {class:"place-select"}) %> 
   </div>
-
-  <div class="field">
-    <%= f.label :purchase_num, "数量" %><br />
-    <%= f.text_field :purchase_num %>
+  
+  
+  <P>ーーーー商品１ーーーーー</p>
+   <P>商品１（選択してください）</p>
+  <div class="field"> 
+   <%= f.collection_select(:item_id, Item.all, :id, :formatted_name, {}, { name: "item_ids[]", class:"place-select"}) %> 
   </div>
+
+  <P>単価1</p>
+  単価を表示
+
+   <P>数量1（数量を入力してください）</p>
+  <div class="field">
+    <input name = "purchase_nums[]", type = "text" />
+  </div>
+
+   <P>ーーーー商品2ーーーーー</p>
+   <P>商品2（選択してください）</p>
+  <div class="field"> 
+   <%= f.collection_select(:item_id, Item.all, :id, :formatted_name, {}, { name: "item_ids[]", class:"place-select"}) %> 
+  </div>
+
+  <P>単価2</p>
+  単価を表示
+
+   <P>数量2（数量を入力してください）</p>
+  <div class="field">
+    <input name = "purchase_nums[]", type = "text" />
+  </div>
+
+   <P>ーーーー商品3ーーーーー</p>
+   <P>商品3（選択してください）</p>
+  <div class="field"> 
+   <%= f.collection_select(:item_id, Item.all, :id, :formatted_name, {}, { name: "item_ids[]", class:"place-select"}) %> 
+  </div>
+
+  <P>単価3</p>
+  単価を表示
+
+   <P>数量3（数量を入力してください）</p>
+  <div class="field">
+    <input name = "purchase_nums[]", type = "text" />
+  </div>
+
+   <P>ーーーー商品4ーーーーー</p>
+   <P>商品4（選択してください）</p>
+  <div class="field"> 
+   <%= f.collection_select(:item_id, Item.all, :id, :formatted_name, {}, { name: "item_ids[]", class:"place-select"}) %> 
+  </div>
+
+  <P>単価4</p>
+  単価を表示
+
+   <P>数量4（数量を入力してください）</p>
+  <div class="field">
+    <input name = "purchase_nums[]", type = "text" />
+  </div>
+
+   <P>ーーーー商品5ーーーーー</p>
+   <P>商品5（選択してください）</p>
+  <div class="field"> 
+   <%= f.collection_select(:item_id, Item.all, :id, :formatted_name, {}, { name: "item_ids[]", class:"place-select"}) %> 
+  </div>
+
+  <P>単価5</p>
+  単価を表示
+
+   <P>数量5（数量を入力してください）</p>
+  <div class="field">
+    <input name = "purchase_nums[]", type = "text" />
+  </div>
+
+   <P>ーーーー合計額ーーーーー</p>
 
   <div class="field">
     <%= f.label :price, "価格" %><br />
     <%= f.text_field :price %>
   </div>
+  ーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+
 
   <h3>配送住所の入力</h3> 
+
+  <div class="field">
+    <%= f.label :ship_address_num, "配送先番号" %><br />
+    <%= f.text_field :ship_address_num %>
+  </div>
 
   <div class="field">
     <%= f.label :first_name, "姓" %><br />

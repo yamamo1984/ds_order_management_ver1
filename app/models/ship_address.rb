@@ -1,5 +1,7 @@
 class ShipAddress < ApplicationRecord
-  belongs_to :order
+  has_many :orders
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :place
   
 end

@@ -31,7 +31,7 @@
           <P>商品コード：</p><%= "" %>
         </div>
         <div class="customer__detail">
-          <P>商品名：</p><%= "" %>
+          <P>商品名：</p><%= '' %>
         </div>
         <div class="customer__detail">
           <P>数量：</p><%= @order.purchase_num %>
@@ -43,8 +43,12 @@
           <P>配送業者：</p><%= "" %>
         </div>
          <div class="customer__detail">
-          <P>備考：</p><%= "" %>
-        </div>
+          <P>備考：</p><%= ''%>
+         </div>  
+
+        <%= render partial: 'ship_address' %>
+      
+       
        
 
          

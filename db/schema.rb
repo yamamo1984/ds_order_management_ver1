@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_19_071954) do
+ActiveRecord::Schema.define(version: 2021_03_08_050203) do
 
   create_table "customers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name", null: false
@@ -40,13 +40,26 @@ ActiveRecord::Schema.define(version: 2021_02_19_071954) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "order_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_order_items_on_item_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+  end
+
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "order_num", null: false
     t.integer "purchase_num", null: false
     t.integer "price", null: false
     t.bigint "user_id", null: false
     t.bigint "customer_id", null: false
+    t.bigint "ship_address_id", null: false
+    t.bigint "item_id", null: false
     t.index ["customer_id"], name: "index_orders_on_customer_id"
+    t.index ["item_id"], name: "index_orders_on_item_id"
+    t.index ["ship_address_id"], name: "index_orders_on_ship_address_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -62,11 +75,11 @@ ActiveRecord::Schema.define(version: 2021_02_19_071954) do
     t.string "building"
     t.text "memo"
     t.bigint "customer_id", null: false
-    t.bigint "order_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "ship_address_num", null: false
+    t.string "email"
     t.index ["customer_id"], name: "index_ship_addresses_on_customer_id"
-    t.index ["order_id"], name: "index_ship_addresses_on_order_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -84,7 +97,8 @@ ActiveRecord::Schema.define(version: 2021_02_19_071954) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "order_items", "items"
+  add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "users"
   add_foreign_key "ship_addresses", "customers"
-  add_foreign_key "ship_addresses", "orders"
 end

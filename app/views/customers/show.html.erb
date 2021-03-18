@@ -46,6 +46,9 @@
         <div class="customer__detail">
           <P>備考：</p><%= @customer.memo %>
         </div>
+        <div class="prototype__manage">
+         <%= link_to "配送先一覧", customer_ship_addresses_path(@customer.id), method: :get, class: :prototype__btn %>
+        </div>
 
         <div class="prototype__manage">
           <%= link_to "一覧に戻る", customers_path, class: :prototype__btn %>
