@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ProtoSpace</title>
+    <title>ds_order_management_system</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,30 +12,31 @@
 
   <body>
     <header class="header">
-      <div class="inner">
-        <div class="nav">
-          <div class="nav__left">
-            <%= link_to image_tag("logo.png", class: :logo), root_path %>
+      <div class="nav justify-content-center">
+        <div class="nav-item">
+          <div class="nnav-link">
+            <%= link_to image_tag("logo.png" ), root_path %>
           </div>
-          <%# ログインしているときは以下を表示 %>
+          <%# ログインしているとき %>
           <% if user_signed_in? %> 
-            <div class="nav__right">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: :nav__logout %>
-              <%= link_to "商品一覧", items_path, class: :nav__logout %>
-              <%= link_to "顧客一覧", customers_path, class: :nav__logout %>
-              <%= link_to "注文一覧", orders_path, class: :nav__logout %>
-              <%= link_to "新規オーダー", new_order_path , class: :nav__btn %>
+            <div class= "btn-group" role="group" aria-label="Basic example" >
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-secondary" %>
+              <%= link_to "商品一覧", items_path, class: "btn btn-secondary"%>
+              <%= link_to "顧客一覧", customers_path, class: "btn btn-secondary"%>
+              <%= link_to "注文一覧", orders_path, class: "btn btn-secondary"%>
+              <%= link_to "新規オーダー", new_order_path, class: "btn btn-secondary"%>
             </div>
             <% else %>
-          <%# ログインしていないときは以下を表示するようにしましょう %>
-            <div class="nav__right">
-              <%= link_to "ログイン", new_user_session_path, class: :nav__btn %>
-              <%= link_to "新規登録", new_user_registration_path, class: :nav__btn %>
+          <%# ログインしていないとき %>
+            <div class= "btn-group" role="group" aria-label="Basic example">
+              <%= link_to "ログイン", new_user_session_path, class: "btn btn-secondary"%>
+              <%= link_to "新規登録", new_user_registration_path, class: "btn btn-secondary" %>
             </div>
           <% end %>
         </div>
       </div>
     </header>
+    
     <%= yield %>
     <footer class="footer">
       <p class="copyright">Copyright © PROTO SPACE All rights reserved.</p>

@@ -9,23 +9,27 @@
         <% end %>
 
 <h1>顧客一覧</h1>
-<%= link_to "新規顧客", new_customer_path , class: :nav__btn %>
-<div class="contents row">
+<%= link_to "新規顧客", new_customer_path , class: "btn btn-outline-primary" %>
+<table class="table table-bordered">
+  <thead class="thead-light">
+    <tr>
+    <th>詳細</th>
+      <th>顧客名</th>
+      <th>会社名</th>
+      <th>注文数（進行中）</th>
+    </tr>
+  </thead>
   <% @customer.each do |customer| %>  
-      <div class="more">
-       <%# <span><%= image_tag 'arrow_top.png' %></span>
-        <ul class="more_list">
-        <li>
-          <%= link_to "詳細", customer_path(customer.id), method: :get, class: :link__btn %>
-        </li>
-        </ul>
-      </div>
-      <% if customer.company == "" %>
-      <p><%= customer.last_name + customer.first_name %></p>
-      <% else %>
-      <p><%= customer.company %></p>
-      <% end %>
-  
+   <tbody>
+    <tr>
+      <td><%= link_to "詳細", customer_path(customer.id), method: :get, class: "btn btn-primary btn-sm" %></td>
+      <td><%= customer.last_name + customer.first_name %></td>
+      <td><%= customer.company %></td>
+      <td><%= "1" %></td>
+    </tr>
+  </tbody>
   <% end %>
-</div>
+</table>
+
+
 </main>

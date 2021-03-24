@@ -8,7 +8,7 @@ class AddOrdersController < ApplicationController
   #パラメータに入っている配列の数に応じてレコードを繰り返す
   def create
     #eachメソッドで複数の配列を回すための記述
-    order_params['item_id'].zip(order_params['purchase_num']).each do |i, p|
+    order_params['item_ids'].zip(order_params['purchase_num']).each do |i, p|
       @order = Order.new
       @order.order_num = order_params['order_num']
       @order.price = order_params['price']
@@ -18,6 +18,8 @@ class AddOrdersController < ApplicationController
       @order.user_id = order_params['user_id']
       @order.item_id = i
       if @order.save
+
+
       else  
         render :new
       end   
@@ -26,6 +28,8 @@ class AddOrdersController < ApplicationController
   
   private
   def order_params
-    params.require(:order).permit(:order_num, :price, :customer_id, :ship_address_id).merge(purchase_num: params[:purchase_nums],item_id: params[:item_ids],user_id: current_user.id)
+    params.require(:order).permit(:order_num, :price, :customer_id, :ship_address_id, item_ids: []).merge(purchase_num: params[:purchase_nums],user_id: current_user.id)
+    binding.pry
+  
   end
 end

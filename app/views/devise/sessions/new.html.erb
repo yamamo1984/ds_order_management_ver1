@@ -1,23 +1,23 @@
-<div class="main">
-  <div class="inner">
-    <div class="form__wrapper">
-      <h2 class="page-heading">ユーザーログイン</h2>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6 max-auto">
+      <h2>ユーザーログイン</h2>
 
   
         <%= form_with model: @user, url: new_user_session_path, local: true do |f| %>
 
-        <div class="field">
+        <div class="form-group">
           <%= f.label :email, "メールアドレス" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, autofocus: true %>
         </div>
 
-        <div class="field">
+        <div class="form-group">
           <%= f.label :password, "パスワード（6文字以上）" %><br />
-          <%= f.password_field :password, autocomplete: "current-password" %>
+          <%= f.password_field :password %>
         </div>
 
-        <div class="actions">
-          <%= f.submit "ログイン", class: :form__btn  %>
+        <div>
+          <%= f.submit "ログイン", class: "btn btn-primary" %>
         </div>
       <% end %>
     </div>

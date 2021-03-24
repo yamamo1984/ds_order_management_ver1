@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:edit, :show]
 
   def index
-    @order = Order.all
+    @order_items = OrderItem.all
  
   end   
   
@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
       @order.purchase_num = p
       @order.user_id = order_params['user_id']
       @order.item_id = i
-      @order.save! 
+      @order.save
     end  
     if @order.save && @order.ship_save
       redirect_to orders_path(@order)
