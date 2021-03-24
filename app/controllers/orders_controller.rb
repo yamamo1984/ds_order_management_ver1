@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:edit, :show]
 
   def index
-    @order_items = OrderItem.all
+    @order = Order.all
  
   end   
   

@@ -7,8 +7,7 @@ class Item < ApplicationRecord
     validates :size
     validates :stock_num
   end
-    has_many :order_items
-    has_many :orders, through: :order_items
+    has_many :orders
 
     def formatted_name
       "#{name} | #{color} | #{size} "

@@ -28,8 +28,8 @@ class AddOrdersController < ApplicationController
   
   private
   def order_params
-    params.require(:order).permit(:order_num, :price, :customer_id, :ship_address_id, item_ids: []).merge(purchase_num: params[:purchase_nums],user_id: current_user.id)
-    binding.pry
+    params.require(:order).permit(:order_num, :price, :customer_id, :ship_address_id, :name, item_ids: []).merge(purchase_num: params[:purchase_nums],user_id: current_user.id)
+
   
   end
 end
