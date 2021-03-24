@@ -9,21 +9,31 @@
         <% end %>
 
 <h1>注文一覧</h1>
-<div class="contents row">
-  <% @order.each do |order| %>  
-      <div class="more">
-       <%# <span><%= image_tag 'arrow_top.png' %></span>
-        <ul class="more_list">
-          <li>
-          <%= link_to "詳細", order_path(order.id), method: :get, class: :link__btn %>
-        </li>
-        </ul>
-        
-      </div>
-      <p><%= order.order_num %></p>
-      <span class="price">
-        <%= "" %>
-      </span>
+<table class="table table-bordered">
+  <thead class="thead-light">
+    <tr>
+    <th>詳細</th>
+      <th>注文番号</th>
+      <th>購入者</th>
+      <th>会社名</th>
+      <th>品目数</th>
+      <th>請求額</th>
+
+    </tr>
+  </thead>
+  <% @order_items.each do |order_item| %>  
+  <tbody>
+    <tr>
+      <td><%= link_to "詳細", order_path(order_item.id), method: :get, class: "btn btn-primary btn-sm" %></td>
+      <td><%= order_item.order.order_num %></td>
+      <td><%= order_item.order.customer.last_name + order_item.order.customer.first_name %></td>
+      <td><%= order_item.order.customer.company %></td>
+      <td><%= "java" %></td>
+      <td><%= "java" %></td>
+      <td><%= "java" %></td>
+      
+    </tr>
+  </tbody>
   <% end %>
-</div>
+</table>
 </main>
