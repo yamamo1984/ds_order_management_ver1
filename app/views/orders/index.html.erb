@@ -21,13 +21,13 @@
 
     </tr>
   </thead>
-  <% @order_items.each do |order_item| %>  
+  <% @order.each do |order| %>  
   <tbody>
     <tr>
-      <td><%= link_to "詳細", order_path(order_item.id), method: :get, class: "btn btn-primary btn-sm" %></td>
-      <td><%= order_item.order.order_num %></td>
-      <td><%= order_item.order.customer.last_name + order_item.order.customer.first_name %></td>
-      <td><%= order_item.order.customer.company %></td>
+      <td><%= link_to "詳細", order_path(order.id), method: :get, class: "btn btn-primary btn-sm" %></td>
+      <td><%= order.order_num %></td>
+      <td><%= order.customer.last_name + order.customer.first_name %></td>
+      <td><%= order.customer.company %></td>
       <td><%= "java" %></td>
       <td><%= "java" %></td>
       <td><%= "java" %></td>
