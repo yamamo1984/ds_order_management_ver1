@@ -1,13 +1,7 @@
 <%= form_with model: @order, local: true do |f| %>
-  <div class="field">
-
-  <h3>注文情報の入力</h3> 
-    <%= f.label :order_num, "注文番号" %><br />
-    <%= f.text_field :order_num %>
-  </div>
-  <P>購入者（選択してください）</p>
+   <P>商品（選択してください）</p>
   <div class="field"> 
-   <%= f.collection_select(:customer_id, Customer.all, :id, :company, {}, {class:"place-select"}) %> 
+   <%= f.collection_select(:item_id, Item.all, :id, :formatted_name, {}, {  name: "order[item_id]", class:"place-select"}) %> 
   </div>
 
 
@@ -16,40 +10,6 @@
     <%= f.text_field :purchase_num %>
   </div>
 
-  <div class="field">
-    <%= f.label :price, "価格" %><br />
-    <%= f.text_field :price %>
-  </div>
-
-  <h1>配送先</h1> 
-  <div class="field">
-  <h3>現在の配送先</h3>
-      <p class="field">配送先</p>
-    </div>
-    <div class="field">
-      <P>郵便番号：</p><%= @order.ship_address.post_code %>
-    </div>
-    <div class="field">
-      <P>配送先：</p><%= @order.ship_address.place.name %>
-    </div>
-    <div class="field">
-      <P><%= @order.ship_address.city + @order.ship_address.street_num %></P>
-      <P><%= @order.ship_address.building %></P>
-    </div>
-    <div class="field">
-      <P>会社名：</p><%= @order.ship_address.company %>
-    </div>
-    <div class="field">
-      <P>受け取り人名：</p><%= @order.ship_address.last_name + @order.ship_address.first_name %>
-    </div>
-    <div class="field">
-      <P>配送業者：</p><%= "" %>
-    </div>
-
-  <P>配送先を変更する（選択してください）</p>
-  <div class="field"> 
-   <%= f.collection_select(:ship_address_id, ShipAddress.where(customer_id: @order.customer_id), :id, :company, {}, {class:"place-select"}) %> 
-  </div>
 
 
 <div class="actions">

@@ -24,7 +24,7 @@
   <% @order.each do |order| %>  
   <tbody>
     <tr>
-      <td><%= link_to "詳細", order_path(order.id), method: :get, class: "btn btn-primary btn-sm" %></td>
+      <td><%= link_to "詳細", order_path(order.order_num), method: :get, class: "btn btn-primary btn-sm" %></td>
       <td><%= order.order_num %></td>
       <td><%= order.customer.last_name + order.customer.first_name %></td>
       <td><%= order.customer.company %></td>
