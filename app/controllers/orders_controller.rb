@@ -1,9 +1,10 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:edit, :show]
+
 
   def index
-    @order = Order.all
- 
+    #Groupメソッドで指定カラムの重複をまとめ
+    #includesでN+1問題を解消
+    @order = Order.group(:order_num).includes(:customer,:item) 
   end   
   
   def new
@@ -27,7 +28,7 @@ class OrdersController < ApplicationController
       @order.item_id = i
       @order.save
     end  
-    if @order.save && @order.ship_save
+    if @order.save 
       redirect_to orders_path(@order)
     else  
       render :new
@@ -35,25 +36,26 @@ class OrdersController < ApplicationController
   end
 
   def edit
+    @order = Order.find(params[:id])
   end
 
   def update
     order = Order.find(params[:id])
     order.update(order_params_for_edit)
      if order.save
-       redirect_to orders_path
+      redirect_to order_path(order.order_num)
     else  
       render :edit
     end   
   end  
 
   def destroy
-    order = Order.find(params[:id])
-    order.destroy
+    @order = Order.find(params[:id])
+      redirect_to order_path(@order.order_num) if @order.destroy
   end  
 
   def show
-    
+    @order = Order.where(order_num: params[:id]).includes(:customer, :item)
   end  
   
   private
@@ -65,17 +67,11 @@ class OrdersController < ApplicationController
 
   #オーダーeditアクションにおいて、配送先などのパラメータを受け取らない場合に使用するメソッド
   def order_params_for_edit
-    params.require(:order).permit(:order_num, :purchase_num, :price, :customer_id, :ship_address_id)
+    params.require(:order).permit(:order_num, :purchase_num, :item_id)
   end
 
   
 
-
-  
-  def set_order
-    @order = Order.find(params[:id])
-
-  end  
 
   
 end 
