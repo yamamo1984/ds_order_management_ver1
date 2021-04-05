@@ -1,50 +1,88 @@
-<main class="main">
-  <div class="inner">
-    <div class="prototype__wrapper">
-      <p class="-prototype__hedding">
-        <%# <%= order.customer.last_name + order.customer.first_name %> %>
-      </p>
-      <p class="customer__hedding">
-        <%= ""%>
-      </p>
+<%= link_to "削除する", order_path, method: :delete, class: :prototype__btn %>
+<%# 注文者情報のまとめ %>
+<% c_name = @order_for_detail.customer.last_name + @order_for_detail.customer.first_name 
+   c_address = @order_for_detail.customer.place.name + @order_for_detail.customer.city + @order_for_detail.customer.street_num + @order_for_detail.customer.building %>
+<%# 配送先情報のまとめ %>
+<% s_name = @order_for_detail.ship_address.last_name + @order_for_detail.ship_address.first_name
+   s_address = @order_for_detail.ship_address.place.name + @order_for_detail.ship_address.city + @order_for_detail.ship_address.street_num + @order_for_detail.ship_address.building %>
+    <h1>注文詳細</h1>
+<%# 発注者詳細 %>
+    <table class="table table-bordered">  
+      <thead class="thead-light">
+        <tr>
+          <th>ステータス</th>
+          <th>注文番号</th> 
+          <th>注文者</th>
+          <th>会社名</th>
+          <th>郵便番号</th>
+          <th>住所</th>
+          <th>連絡先</th>
+          <th>メール</th>
+        </tr>   
+      </thead>
+      <tbody>
+        <td><%= "#" %></td>
+        <td><%= @order_for_detail.order_num %></td> 
+        <td><%= c_name %></td>
+        <td><%= @order_for_detail.customer.company %></td>
+        <td><%= @order_for_detail.customer.post_code %></td>
+        <td><%= c_address %></td>
+        <td><%= @order_for_detail.customer.tel %></td>
+        <td><%= @order_for_detail.customer.email %></td>
+      </tbody> 
+    </table>  
+<%# 発送先詳細 %>
+    <table class="table table-bordered">  
+      <thead class="alert alert-primary">
+        <tr>
+          <th>配送先番号</th>
+          <th>配送先名</th> 
+          <th>会社名</th>
+          <th>配送先郵便番号</th>
+          <th>配送先住所</th>
+          <th>連絡先</th>
+          <th>メール</th>
+        </tr>   
+      </thead>
+      <tbody>
+        <td><%= @order_for_detail.ship_address.ship_address_num %></td>
+        <td><%= s_name %></td> 
+        <td><%= @order_for_detail.ship_address.company %></td>
+        <td><%= @order_for_detail.ship_address.post_code %></td>
+        <td><%= s_address %></td>
+        <td><%= @order_for_detail.ship_address.tel %></td>
+        <td><%= @order_for_detail.ship_address.email %></td>
+      </tbody> 
+    </table>  
 
-      
-      <%= link_to "by プロトタイプの投稿者", root_path, class: :prototype__user %>
-      <%# プロトタイプの投稿者とログインしているユーザーが同じであれば以下を表示する %>
-        <div class="prototype__manage">
-          <%= link_to "編集する", edit_order_path, method: :get, class: :prototype__btn %>
-          <%= link_to "削除する", order_path, method: :delete, class: :prototype__btn %>
-        </div>
-      <h1>注文詳細</h1>
-      <p>注文番号: <%= %></p>
-      <table class="table table-bordered">
-        <thead class="thead-light">
-          <tr>
-            <th>操作</th>
-            <th>商品コード</th>
-            <th>商品名</th>
-            <th>数量</th>
-            <th>単価</th>
-            <th>金額</th>
-          </tr>
-        </thead>
-        <% @order.each do |order| %>  
-        <tbody>
-          <tr>
-            <td><%= link_to "変更", edit_order_path(order.id), method: :get, class: "btn btn-primary btn-sm" %>
-                <%= link_to "削除", order_path(order.id), method: :delete, class: "btn btn-danger btn-sm" %></td>
-            <td><%= order.item.code %></td>    
-            <td><%= order.item.name %></td>
-            <td><%= order.purchase_num %></td>
-            <td><%= order.item.price %></td>
-            <td><%= order.purchase_num * order.item.price %></td>
-          </tr>  
-        </tbody>
-        <% end %>
-      </table>
+    <table class="table table-bordered">  
+      <thead class="thead-light">
+        <tr>
+          <th>操作</th>
+          <th>商品コード</th>
+          <th>商品名</th>
+          <th>数量</th>
+          <th>単価</th>
+          <th>金額</th>
+          <th>引当</th>
+        </tr>
+      </thead>
+      <% @order.each do |order| %>  
+      <tbody>
+        <tr>
+          <td><%= link_to "変更", edit_order_path(order.id), method: :get, class: "btn btn-primary btn-sm" %>
+              <%= link_to "削除", order_path(order.id), method: :delete, class: "btn btn-danger btn-sm" %></td>
+          <td><%= order.item.code %></td>    
+          <td><%= order.item.name %></td>
+          <td><%= order.purchase_num %></td>
+          <td><%= order.item.price %></td>
+          <td><%= order.purchase_num * order.item.price %></td>
+          <td><%= "#" %></td>
+        </tr>  
+      </tbody>
+      <% end %>
+    </table>
 
-      <div class="prototype__manage">
-        <%= link_to "一覧に戻る", orders_path, class: :prototype__btn %>
-      </div>
-        
-</main>
+    <div class="prototype__manage">
+      <%= link_to "一覧に戻る", orders_path, class: :prototype__btn %>
+    </div>

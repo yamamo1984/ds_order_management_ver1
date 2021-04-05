@@ -12,7 +12,8 @@ class ShipAddressesController < ApplicationController
   def create
     @ship_address = ShipAddress.new(ship_address_params)
     if @ship_address.save
-       redirect_to customer_ship_addresses_path
+      redirect_to customer_path(params[:customer_id])
+  
     end  
   end   
 
@@ -29,7 +30,7 @@ class ShipAddressesController < ApplicationController
     ship_address = ShipAddress.find(params[:id])
     ship_address.update(ship_address_params)
      if ship_address.save
-       redirect_to customer_ship_addresses_path
+       redirect_to customer_ship_address_path(params[:customer_id])
     else  
       render :edit
   end   
@@ -50,8 +51,6 @@ class ShipAddressesController < ApplicationController
   def set_ship_address
     @customer_id = params[:customer_id]
     @customer = Customer.find(@customer_id)
-
-    
   end  
 
 end

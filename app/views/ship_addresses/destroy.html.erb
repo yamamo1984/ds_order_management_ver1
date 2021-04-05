@@ -1,5 +1,5 @@
-<div class="contents row">
-  <div class="success">
-    <h3>削除が完了しました。</h3>
-    <%= link_to '配送先一覧に戻る',  customer_ship_addresses_path %>
-</div>
+<main class="main">
+    <h3>配送先の削除が完了しました</h3>
+    <%=  link_to '配送先一覧に戻る',  customer_path(params[:customer_id]) %>
+</main>  
+

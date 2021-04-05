@@ -23,4 +23,5 @@ class Customer < ApplicationRecord
     validates :place_id, numericality: { other_than: 0 } 
 
     has_many :orders
+    has_many :ship_addresses, dependent: :destroy
 end

@@ -9,6 +9,8 @@
         <% end %>
 
 <h1>注文一覧</h1>
+<%= link_to "新規注文", new_order_path, class: "btn btn-outline-primary" %>
+<%= link_to "既存客注文", new_add_order_path, class: "btn btn-outline-primary" %>
 <table class="table table-bordered">
   <thead class="thead-light">
     <tr>
@@ -26,11 +28,17 @@
     <tr>
       <td><%= link_to "詳細", order_path(order.order_num), method: :get, class: "btn btn-primary btn-sm" %></td>
       <td><%= order.order_num %></td>
-      <td><%= order.customer.last_name + order.customer.first_name %></td>
-      <td><%= order.customer.company %></td>
-      <td><%= "java" %></td>
-      <td><%= "java" %></td>
-      <td><%= "java" %></td>
+        <% if order.customer.nil? %>
+          <td>購入者情報が存在しません</td>
+          <td>会社情報が存在しません</td>
+        <% else %>
+          <td><%= order.customer.last_name + order.customer.first_name %></td>
+          <td><%= order.customer.company %></td>
+        <% end %>  
+          <td><%= "java" %></td>
+          <td><%= "java" %></td>
+          <td><%= "java" %></td>
+
       
     </tr>
   </tbody>

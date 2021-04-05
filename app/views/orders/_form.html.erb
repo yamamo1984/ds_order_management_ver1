@@ -1,13 +1,12 @@
 <%= form_with model: @order, url: orders_path, local: true do |f| %>
-  <div class="field">
+  
 
   <h3>注文情報の入力</h3> 
-    <%= f.label :order_num, "注文番号" %><br />
+  <div class="row">
+    <%= f.label :order_num, "注文番号"  %><br />
     <%= f.text_field :order_num %>
-  </div>
-  <P>購入者（選択してください）</p>
-  <div class="field"> 
-   <%= f.collection_select(:customer_id, Customer.all, :id, :company, {}, {class:"place-select"}) %> 
+    <P>購入者（選択してください）</p>
+    <%= f.collection_select(:customer_id, Customer.all, :id, :company, {}, {class:"place-select"}) %> 
   </div>
   
   
