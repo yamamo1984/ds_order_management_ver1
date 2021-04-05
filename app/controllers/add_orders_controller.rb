@@ -18,8 +18,6 @@ class AddOrdersController < ApplicationController
       @order.user_id = order_params['user_id']
       @order.item_id = i
       if @order.save
-
-
       else  
         render :new
       end   

@@ -33,10 +33,12 @@ class CustomersController < ApplicationController
 
   def destroy
     customer = Customer.find(params[:id])
-    customer.destroy
+    redirect_to customers_path if customer.destroy
   end  
 
   def show
+    @ship_addresses = ShipAddress.where(customer_id: params[:id])
+
   end 
 
   

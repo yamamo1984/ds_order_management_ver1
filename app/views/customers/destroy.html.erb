@@ -1,5 +1,4 @@
-<div class="contents row">
-  <div class="success">
-    <h3>削除が完了しました。</h3>
-    <%= link_to '顧客一覧に戻る',  customers_path %>
-</div>
+<main class="main">
+    <h3>顧客削除が完了しました</h3>
+    <%= link_to '顧客詳細に戻る',  customer_path(params[:customer_id]) %>
+</main>  

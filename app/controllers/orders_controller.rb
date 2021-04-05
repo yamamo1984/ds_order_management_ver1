@@ -14,8 +14,7 @@ class OrdersController < ApplicationController
   def create
     @order = OrderShipAddress.new(order_params)
     @order.ship_save
-    @ship_address_id = ShipAddress.last.id
-     
+    @ship_address_id = ShipAddress.last.id   
     #eachメソッドで複数の配列を回すための記述
     order_params['item_id'].zip(order_params['purchase_num']).each do |i, p|
       @order = Order.new
@@ -42,7 +41,7 @@ class OrdersController < ApplicationController
   def update
     order = Order.find(params[:id])
     order.update(order_params_for_edit)
-     if order.save
+    if order.save!
       redirect_to order_path(order.order_num)
     else  
       render :edit
@@ -56,6 +55,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.where(order_num: params[:id]).includes(:customer, :item)
+    @order_for_detail = @order.find_by(order_num: params[:id])
   end  
   
   private
