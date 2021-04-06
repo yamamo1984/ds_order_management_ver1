@@ -1,13 +1,20 @@
 <%= form_with model: @order, url: orders_path, local: true do |f| %>
   
 
-  <h3>注文情報の入力</h3> 
   <div class="row">
-    <%= f.label :order_num, "注文番号"  %><br />
-    <%= f.text_field :order_num %>
-    <P>購入者（選択してください）</p>
-    <%= f.collection_select(:customer_id, Customer.all, :id, :company, {}, {class:"place-select"}) %> 
+    <div class="col-md-4 bg-secondary text-white border">注文番号</div>
+    <div class="col-md-4 bg-secondary text-white border">購入者</div>
+  </div>  
+  <div class="row">
+    <div class="col-md-4"><%= f.text_field :order_num, class: "form-control", placeholder: "注文番号" %></div>
+    <div class="col-md-4"><%= f.collection_select(:customer_id, Customer.all, :id, :company, {:include_blank => "購入者を選択してください"}, { class:"btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"}) %> </div>
+  </div>  
+  <div class="row">
+    <div class="col-md-8 bg-secondary text-white border">発注商品</div>
   </div>
+    
+    
+ 
   
   
   <P>ーーーー商品１ーーーーー</p>
@@ -86,72 +93,54 @@
     <%= f.label :price, "価格" %><br />
     <%= f.text_field :price %>
   </div>
-  ーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 
 
-  <h3>配送住所の入力</h3> 
-
-  <div class="field">
-    <%= f.label :ship_address_num, "配送先番号" %><br />
-    <%= f.text_field :ship_address_num %>
+  <div class="row">
+    <div class="col-md-12 border">配送先住所の入力</div>
+  </div>  
+  <div class="row">
+    <div class="col-md-4 bg-secondary text-white border">配送先番号</div>
+    <div class="col-md-4 bg-secondary text-white border">配送先名</div>
+    <div class="col-md-4 bg-secondary text-white border">会社名</div>
   </div>
+  <div class="row">
+    <div class="col-md-4"><%= f.text_field :ship_address_num, class: "form-control", placeholder: "配送先番号" %></div>
+    <div class="col-md-2"><%= f.text_field :last_name, class: "form-control", placeholder: "姓" %></div>
+    <div class="col-md-2"><%= f.text_field :first_name, class: "form-control", placeholder: "名" %></div>
+    <div class="col-md-4"><%= f.text_field :company, class: "form-control", placeholder: "会社名" %></div>
+  </div> 
+   <div class="row">
+    <div class="col-md-2 bg-secondary text-white border">郵便番号</div>
+    <div class="col-md-10 bg-secondary text-white border">配送先住所</div>
+  </div>
+  <div class="row">
+    <div class="col-md-2"><%= f.text_field :post_code, class: "form-control", placeholder: "ハイフン無し" %></div>
+    <div class="col-md-2"><%= f.collection_select(:place_id, Place.all, :id, :name, {:include_blank => "都道府県"}, { class:"btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"}) %> </div>
+    <div class="col-md-2"><%= f.text_field :city, class: "form-control", placeholder: "市町村" %></div>
+    <div class="col-md-6"><%= f.text_field :street_num, class: "form-control", placeholder: "番地" %></div>
+  </div> 
+  <div class="row">
+    <div class="col-md-6 bg-secondary text-white border">建物名</div>
+    <div class="col-md-3 bg-secondary text-white border">電話番号</div>
+    <div class="col-md-3 bg-secondary text-white border">E-mail</div>
 
-  <div class="field">
-    <%= f.label :first_name, "姓" %><br />
-    <%= f.text_field :first_name %>
   </div>
+  <div class="row">
+    <div class="col-md-6"><%= f.text_field :building, class: "form-control", placeholder: "任意" %></div>
+    <div class="col-md-3"><%= f.text_field :tel, class: "form-control", placeholder: "OOO-OOOO-OOOO" %></div>
+    <div class="col-md-3"><%= f.text_field :email, class: "form-control", placeholder: "任意" %></div>
+  </div> 
+  <div class="row">
+    <div class="col-md-6 bg-secondary text-white border">備考</div>
+  </div>
+  <div class="row">
+    <div class="col-md-6"><%= f.text_area :tel, class: "form-control", placeholder: "備考" %></div>
+  </div>  
+  <div class="row">
+    <div class="actions">
+      <%= f.submit "保存する", class: "btn btn-primary" %>
+    </div>
+  </div>  
 
-  <div class="field">
-    <%= f.label :last_name, "名" %><br />
-    <%= f.text_field :last_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :company, "会社名" %><br />
-    <%= f.text_field :company %>
-  </div>
-
-  <div class="field">
-    <%= f.label :tel, "電話番号" %><br />
-    <%= f.text_field :tel %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email, "Email（任意）" %><br />
-    <%= f.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :post_code, "郵便番号（ハイフンあり）" %><br />
-    <%= f.text_field :post_code %>
-  </div>
-
-    <P>都道府県</p>
-  <div class="field"> 
-   <%= f.collection_select(:place_id, Place.all, :id, :name, {}, {class:"place-select"}) %> 
-  </div>
-  
-  <div class="field">
-    <%= f.label :city, "市" %><br />
-    <%= f.text_field :city %>
-  </div>
-
-  <div class="field">
-    <%= f.label :street_num, "番地" %><br />
-    <%= f.text_field :street_num %>
-  </div>
-
-  <div class="field">
-    <%= f.label :building, "建物名" %><br />
-    <%= f.text_field :building %>
-  </div>
-
-    <div class="field">
-    <%= f.label :memo, "備考" %><br />
-    <%= f.text_area :memo %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "保存する", class: :form__btn  %>
-  </div>
+  </form>
 <% end %>
