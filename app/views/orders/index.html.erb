@@ -1,4 +1,4 @@
-<main class="main">
+<div class="container">
   <div class="inner">
        <% if user_signed_in? %>
         <div class="greeting"> 
@@ -9,18 +9,17 @@
         <% end %>
 
 <h1>注文一覧</h1>
-<%= link_to "新規注文", new_order_path, class: "btn btn-outline-primary" %>
-<%= link_to "既存客注文", new_add_order_path, class: "btn btn-outline-primary" %>
+<%= link_to "新規注文", new_order_path, class: "mb-2 btn btn-outline-primary" %>
+<%= link_to "既存客注文", new_add_order_path, class: "mb-2 btn btn-outline-primary" %>
 <table class="table table-bordered">
   <thead class="thead-light">
     <tr>
-    <th>詳細</th>
-      <th>注文番号</th>
-      <th>購入者</th>
-      <th>会社名</th>
-      <th>品目数</th>
-      <th>請求額</th>
-
+    <th style="width: 80px">詳細</th>
+    <th style="width: 50wh">注文番号</th>
+    <th style="width: 50wh">購入者</th>
+    <th style="width: 50wh">会社名</th>
+    <th style="width: 50wh">品目数</th>
+    <th style="width: 50wh">請求額</th>
     </tr>
   </thead>
   <% @order.each do |order| %>  
@@ -44,4 +43,4 @@
   </tbody>
   <% end %>
 </table>
-</main>
+</div>

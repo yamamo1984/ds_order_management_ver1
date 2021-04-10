@@ -12,4 +12,4 @@ class Item < ApplicationRecord
     def formatted_name
       "#{name} | #{color} | #{size} "
     end  
-end
+  end    

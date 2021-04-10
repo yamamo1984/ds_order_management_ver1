@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   resources :customers do
     resources :ship_addresses
   end
-  resources :orders
+  resources :orders do
+    collection do
+      get 'items_search'
+    end
+  end  
   resources :add_orders 
   
-  resources :items
-  collection do
-    get 'search'
-  end  
+  resources :items   
 end

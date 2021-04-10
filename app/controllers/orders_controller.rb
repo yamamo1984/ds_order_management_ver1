@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-
-
+  
+  before_action :set_q, only: [:new,:items_search]
   def index
     #Groupメソッドで指定カラムの重複をまとめ
     #includesでN+1問題を解消
@@ -56,8 +56,14 @@ class OrdersController < ApplicationController
   def show
     @order = Order.where(order_num: params[:id]).includes(:customer, :item)
     @order_for_detail = @order.find_by(order_num: params[:id])
-  end  
-  
+  end 
+
+  def items_search
+    @results = @p.result
+    render :action => 'new'
+  end
+
+
   private
 
   
@@ -70,8 +76,12 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:order_num, :purchase_num, :item_id)
   end
 
-  
+  # 商品検索の際に使用するRansacで検索オブジェクトの生成
+  def set_q
+    @p = Item.ransack(params[:q])
+  end  
 
 
   
-end 
+end
+

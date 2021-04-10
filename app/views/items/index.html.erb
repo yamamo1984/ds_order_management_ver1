@@ -1,4 +1,4 @@
-<main>
+<div class="container">
     <% if user_signed_in? %>
       <div> 
         こんにちは、
@@ -13,13 +13,13 @@
 <table class="table table-bordered">
   <thead class="thead-light">
     <tr>
-      <th>詳細</th>
-      <th>商品コード</th>
-      <th>商品名</th>
-      <th>サイズ</th>
-      <th>カラー</th>
-      <th>単価</th>
-      <th>在庫数</th>
+      <th style="width: 50px">詳細</th>
+      <th style="width: 10vw">商品コード</th>
+      <th style="width: 10vw" >商品名</th>
+      <th style="width: 10vw">サイズ</th>
+      <th style="width: 10vw">カラー</th>
+      <th style="width: 10vw">単価</th>
+      <th style="width: 10vw">在庫数</th>
     </tr>
   </thead>
   <% @item.each do |item| %> 

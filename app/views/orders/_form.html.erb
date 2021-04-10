@@ -1,6 +1,11 @@
-<%= form_with model: @order, url: orders_path, local: true do |f| %>
-  
+    
+<div class="col-md-4 ">
+<%= search_form_for @p, url: items_search_orders_path do |f| %>
+<%= f.search_field :name, class: "form-control", placeholder: "商品コードで検索" %></div>
+<%= f.submit "検索", class: "btn btn-outline-primary my-2 my-sm-0" %>
+<% end %>
 
+<%= form_with model: @order, url: orders_path, local: true do |f| %>
   <div class="row">
     <div class="col-md-4 bg-secondary text-white border">注文番号</div>
     <div class="col-md-4 bg-secondary text-white border">購入者</div>
@@ -14,35 +19,30 @@
   </div>
   <div class="row">
     <nav class="navbar navbar-light bg-light">
-    <form class="form-inline">
-    <input class="form-control mr-sm-2" type="text" placeholder="商品コードで検索">
-    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">検索</button>
-    </form>
+    
     </nav>
   </div>  
-    
-    
- 
-  
+
   
   <P>ーーーー商品１ーーーーー</p>
-   <P>商品１（選択してください）</p>
+  
+  <P>商品１（選択してください）</p>
   <div class="field"> 
-   <%= f.collection_select(:item_id, Item.all, :id, :formatted_name, {}, { name: "item_ids[]", class:"place-select"}) %> 
+  <%= f.collection_select(:item_id, Item.all, :id, :formatted_name, {}, { name: "item_ids[]", class:"place-select"}) %> 
   </div>
 
   <P>単価1</p>
   単価を表示
 
-   <P>数量1（数量を入力してください）</p>
+  <P>数量1（数量を入力してください）</p>
   <div class="field">
     <input name = "purchase_nums[]", type = "text" />
   </div>
 
-   <P>ーーーー商品2ーーーーー</p>
-   <P>商品2（選択してください）</p>
+  <P>ーーーー商品2ーーーーー</p>
+  <P>商品2（選択してください）</p>
   <div class="field"> 
-   <%= f.collection_select(:item_id, Item.all, :id, :formatted_name, {}, { name: "item_ids[]", class:"place-select"}) %> 
+  <%= f.collection_select(:item_id, Item.all, :id, :formatted_name, {}, { name: "item_ids[]", class:"place-select"}) %> 
   </div>
 
   <P>単価2</p>
@@ -142,13 +142,8 @@
     <div class="col-md-6 mt-2 bg-secondary text-white border">備考</div>
   </div>
   <div class="row">
-    <div class="col-md-6"><%= f.text_area :tel, class: "form-control", placeholder: "備考" %></div>
+    <div class="col-md-6 mb-2"><%= f.text_area :tel, class: "form-control", placeholder: "備考" %></div>
+    <div class="actions"><%= f.submit "保存する", class: "btn btn-primary" %></div>
   </div>  
-  <div class="row">
-    <div class="actions">
-      <%= f.submit "保存する", class: "btn btn-primary" %>
-    </div>
-  </div>  
-
   </form>
 <% end %>
