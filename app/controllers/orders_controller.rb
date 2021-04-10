@@ -58,11 +58,16 @@ class OrdersController < ApplicationController
     @order_for_detail = @order.find_by(order_num: params[:id])
   end 
 
-  def items_search
-    @results = @p.result
-    render :action => 'new'
-  end
+  # def items_search
+  #   @results = @p.result
+  #   render :action => 'new'
+  # end
 
+  def items_search
+    return nil if params[:keyword] == ""
+    @item = Item.where(['name LIKE ?', "%#{params[:keyword]}%"] )
+    render json:{ keyword: @item }
+  end
 
   private
 

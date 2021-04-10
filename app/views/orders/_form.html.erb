@@ -1,9 +1,10 @@
     
-<div class="col-md-4 ">
-<%= search_form_for @p, url: items_search_orders_path do |f| %>
-<%= f.search_field :name, class: "form-control", placeholder: "商品コードで検索" %></div>
-<%= f.submit "検索", class: "btn btn-outline-primary my-2 my-sm-0" %>
-<% end %>
+<%# <div class="col-md-4 "> %>
+<%# <%= search_form_for @p, url: items_search_orders_path do |f| %> %>
+<%# <%= f.search_field :name, class: "form-control", placeholder: "商品コードで検索" %></div> %>
+<%# <%= f.submit "検索", class: "btn btn-outline-primary my-2 my-sm-0" %> %>
+<%# <% end %> %>
+
 
 <%= form_with model: @order, url: orders_path, local: true do |f| %>
   <div class="row">
@@ -25,7 +26,14 @@
 
   
   <P>ーーーー商品１ーーーーー</p>
+  <div id='item-field'>
+      <%= f.label :name, "タグ" %>
+      <%= f.text_field :name, class:"item-field" %>
+    </div>
+    <div id="search-result">
+    </div>
   
+
   <P>商品１（選択してください）</p>
   <div class="field"> 
   <%= f.collection_select(:item_id, Item.all, :id, :formatted_name, {}, { name: "item_ids[]", class:"place-select"}) %> 
