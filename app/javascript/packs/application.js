@@ -8,6 +8,8 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 require("../search")
+require('jquery')
+
 import 'bootstrap';
 import '../stylesheets/application';
 
