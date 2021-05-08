@@ -1,18 +1,14 @@
 <%= form_with model: @order, local: true do |f| %>
-   <P>商品（選択してください）</p>
-  <div class="field"> 
-   <%= f.collection_select(:item_id, Item.all, :id, :formatted_name, {}, {  name: "order[item_id]", class:"place-select"}) %> 
-  </div>
 
-
-  <div class="field">
-    <%= f.label :purchase_num, "数量" %><br />
-    <%= f.text_field :purchase_num %>
-  </div>
-
-
-
-<div class="actions">
-    <%= f.submit "保存する", class: :form__btn  %>
-  </div>
+<div class="row">
+  <div class="col-md-4 bg-secondary text-white border">注文番号</div>
+  <div class="col-md-4 bg-secondary text-white border">商品名</div>
+  <div class="col-md-2 bg-secondary text-white border">数量</div>
+</div>  
+<div class="row">
+  <div class="col-md-4 "><%= @order.order_num %></div>
+  <div class="col-md-4 "><%= f.collection_select(:item_id, Item.all, :id, :formatted_name, {}, { class:"btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"}) %> </div>
+  <div class="col-md-2 mb-2 "><%= f.text_field :purchase_num, class: "form-control", placeholder: "数量" %></div>
+  <div class="actions ml-4"><%= f.submit "保存する", class: "btn btn-primary" %></div>
+</div> 
 <% end %>

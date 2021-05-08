@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-
+  before_action :set_q, only: [:new,:items_search]
 
   def index
     #Groupメソッドで指定カラムの重複をまとめ
@@ -50,14 +50,23 @@ class OrdersController < ApplicationController
 
   def destroy
     @order = Order.find(params[:id])
-      redirect_to order_path(@order.order_num) if @order.destroy
+    redirect_to order_path(@order.order_num) if @order.destroy
   end  
 
   def show
-    @order = Order.where(order_num: params[:id]).includes(:customer, :item)
-    @order_for_detail = @order.find_by(order_num: params[:id])
-  end  
-  
+      @order = Order.where(order_num: params[:id]).includes(:customer, :item)
+      @order_for_detail = @order.find_by(order_num: params[:id]) 
+      # 顧客のオーダーが空になったら一覧に遷移する     
+      redirect_to orders_path unless @order_for_detail.present?
+  end 
+
+  def items_search
+    return nil if params[:keyword] == ""
+    @item = Item.where(['name LIKE ?', "%#{params[:keyword]}%"] )
+    render json:{ keyword: @item }
+  end
+
+
   private
 
   
@@ -70,8 +79,12 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:order_num, :purchase_num, :item_id)
   end
 
-  
+  # 商品検索の際に使用するRansacで検索オブジェクトの生成
+  def set_q
+    @p = Item.ransack(params[:q])
+  end  
 
 
   
-end 
+end
+

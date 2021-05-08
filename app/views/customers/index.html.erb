@@ -1,4 +1,4 @@
-<main class="main">
+<div class="container">
   <div class="inner">
        <% if user_signed_in? %>
         <div class="greeting"> 
@@ -13,10 +13,10 @@
 <table class="table table-bordered">
   <thead class="thead-light">
     <tr>
-    <th>詳細</th>
-      <th>顧客名</th>
-      <th>会社名</th>
-      <th>注文数（進行中）</th>
+    <th style="width: 50px">詳細</th>
+    <th style="width: 10vw">顧客名</th>
+    <th style="width: 10vw">会社名</th>
+    <th style="width: 10vw">注文数（進行中）</th>
     </tr>
   </thead>
   <% @customer.each do |customer| %>  

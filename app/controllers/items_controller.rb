@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:edit, :show]
+  
   def index
     @item = Item.all
   end  
@@ -11,7 +12,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-       redirect_to item_path(@item)
+      redirect_to item_path(@item)
     else  
       render :new
     end   
@@ -26,8 +27,8 @@ class ItemsController < ApplicationController
   def update
     item = Item.find(params[:id])
     item.update(item_params)
-     if item.save
-       redirect_to item_path
+    if item.save
+    redirect_to item_path
     else  
       render :edit
     end   
@@ -38,6 +39,10 @@ class ItemsController < ApplicationController
     item.destroy
   end  
 
+  
+
+  
+
   private
   def item_params
     params.require(:item).permit(:code, :name, :price, :color, :size, :city, :stock_num, :memo)
@@ -45,5 +50,8 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
-  end  
-end
+  end 
+
+
+end  
+

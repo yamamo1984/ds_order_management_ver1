@@ -4,8 +4,16 @@ Rails.application.routes.draw do
   resources :customers do
     resources :ship_addresses
   end
-  resources :orders
-  resources :add_orders 
+  resources :orders do
+    collection do
+      get 'items_search'
+    end
+  end  
+  resources :add_orders do
+    collection do
+      get 'items_search'
+    end
+  end  
   
-  resources :items
+  resources :items   
 end
