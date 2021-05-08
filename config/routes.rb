@@ -9,7 +9,11 @@ Rails.application.routes.draw do
       get 'items_search'
     end
   end  
-  resources :add_orders 
+  resources :add_orders do
+    collection do
+      get 'items_search'
+    end
+  end  
   
   resources :items   
 end

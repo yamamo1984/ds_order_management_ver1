@@ -14,40 +14,41 @@
     <div class="col-md-4"><%= f.collection_select(:customer_id, Customer.all, :id, :company, {:include_blank => "購入者を選択してください"}, { class:"btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"}) %> </div>
   </div>  
   <div class="row">
+    <div class="col-md-8 bg-secondary text-white border">商品検索</div>
+  </div>  
+  <div class="row" id= "items"> 
+    <div class="item-field" id="item-field-">
+      <div class="row" id="parent-div-">
+        <div class="col-md-3 "><%= f.text_field :item_id, id: "item-name", class: "item-name", placeholder: "商品名を入力", autocomplete: "off" %>
+          <div class="row" id="search-result-"></div>
+          <div class="row"><%= f.hidden_field :item_id, id: "item-id", name: "item_ids[]" %></div>
+        </div> 
+      </div>  
+    </div>  
+  </div>
+  <div class="row" id="order_items">
     <div class="col-md-3 bg-secondary text-white border">商品番号</div>
     <div class="col-md-3 bg-secondary text-white border">商品名（キーワード入力）</div>
     <div class="col-md-3 bg-secondary text-white border">価格</div>
     <div class="col-md-2 bg-secondary text-white border">数量</div>
     <div class="col-md-1 bg-secondary text-white border">操作</div>
   </div>  
+
+  <div class="row">
+    <div class="col-md-8 bg-secondary text-white border">合計額</div>
+  </div> 
+    <div class="row">
+      <%= f.label :price, "価格" %><br />
+      <%= f.text_field :price %>
+    </div>
+    
   
-  <div id= "items"> 
-    <div class="item-field" id="item-field-">
-        <div class="row" id="parent-div-">
-          <div class="col-md-3" id = "item-num-"><%=  "商品番号" %></div>
-          <div class="col-md-3 "><%= f.text_field :item_id, id: "item-name-", class: "item-name", placeholder: "商品名を入力", autocomplete: "off" %> <%# 検索結果を表示 %>
-            <div class="row" id="search-result-"></div>
-            <div class="row"><%= f.hidden_field :item_id, id: "item-id", name: "item_ids[]" %></div>
-            </div>
-          <div class="col-md-3" id = "item-price-"><%=  "価格" %></div>
-          <div class="col-md-2" id = "purchase-num-" ><input name="purchase_nums[]", type = "text", style="width: 100px;"/></div> 
-          <div class="col-md-1" id = "purchase-num-" ></div>
-        
-          
-        </div>  
-      </div>  
-  </div>
 
 
-</div>
 
 
-<P>ーーーー合計額ーーーーー</p>
 
-  <div class="field">
-    <%= f.label :price, "価格" %><br />
-    <%= f.text_field :price %>
-  </div>
+  
 
 
   <div class="row">

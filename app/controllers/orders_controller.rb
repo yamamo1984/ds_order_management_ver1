@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  
   before_action :set_q, only: [:new,:items_search]
+
   def index
     #Groupメソッドで指定カラムの重複をまとめ
     #includesでN+1問題を解消
@@ -54,8 +54,10 @@ class OrdersController < ApplicationController
   end  
 
   def show
-    @order = Order.where(order_num: params[:id]).includes(:customer, :item)
-    @order_for_detail = @order.find_by(order_num: params[:id])
+      @order = Order.where(order_num: params[:id]).includes(:customer, :item)
+      @order_for_detail = @order.find_by(order_num: params[:id]) 
+      # 顧客のオーダーが空になったら一覧に遷移する     
+      redirect_to orders_path unless @order_for_detail.present?
   end 
 
   def items_search

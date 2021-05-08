@@ -1,10 +1,10 @@
 <%= link_to "削除する", order_path, method: :delete, class: :prototype__btn %>
 <%# 注文者情報のまとめ %>
 <% c_name = @order_for_detail.customer.last_name + @order_for_detail.customer.first_name 
-   c_address = @order_for_detail.customer.place.name + @order_for_detail.customer.city + @order_for_detail.customer.street_num + @order_for_detail.customer.building %>
+  c_address = @order_for_detail.customer.place.name + @order_for_detail.customer.city + @order_for_detail.customer.street_num + @order_for_detail.customer.building %>
 <%# 配送先情報のまとめ %>
 <% s_name = @order_for_detail.ship_address.last_name + @order_for_detail.ship_address.first_name
-   s_address = @order_for_detail.ship_address.place.name + @order_for_detail.ship_address.city + @order_for_detail.ship_address.street_num + @order_for_detail.ship_address.building %>
+  s_address = @order_for_detail.ship_address.place.name + @order_for_detail.ship_address.city + @order_for_detail.ship_address.street_num + @order_for_detail.ship_address.building %>
     <h1>注文詳細</h1>
 <%# 発注者詳細 %>
     <table class="able table-bordered">  
@@ -72,6 +72,13 @@
         <tr>
           <td><%= link_to "変更", edit_order_path(order.id), method: :get, class: "btn btn-primary btn-sm" %>
               <%= link_to "削除", order_path(order.id), method: :delete, class: "btn btn-danger btn-sm" %></td>
+              <script>
+              $(".btn btn-danger btn-sm").click(function() {
+                if (".btn btn-danger btn-sm" < 1) {
+                  aleat('警告：アイテムをすべて削除すると注文自体が削除されます。');
+                };
+              });
+              </script> 
           <td><%= order.item.code %></td>    
           <td><%= order.item.name %></td>
           <td><%= order.purchase_num %></td>

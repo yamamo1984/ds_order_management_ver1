@@ -1,11 +1,11 @@
 import { get } from "jquery";
 // 指定のページでスクリプトが動く記述
-if (location.pathname.match("orders/new")){
+if (location.pathname.match("orders/new") || location.pathname.match("add_orders/new")){
   // 検索フォームに入力されたらキーワードをHTTPで飛ばして情報を拾う
   document.addEventListener("DOMContentLoaded", () =>  {
     const inputElement = document.getElementById("parent-div-");
     inputElement.addEventListener("keyup", () => {
-      const keyword = document.getElementById("item-name-").value;
+      const keyword = document.getElementById("item-name").value;
       const XHR = new XMLHttpRequest();
       XHR.open("GET", `items_search/?keyword=${keyword}`, true);
       XHR.responseType = "json";
@@ -30,7 +30,7 @@ if (location.pathname.match("orders/new")){
             // リストから選択したものをフォームのValueに入れる（hiddenタイプのitem-idの方に入力）
             clickElement.addEventListener("click", () => {
               
-              document.getElementById("item-name-").value = clickElement.textContent;
+              document.getElementById("item-name").value = clickElement.textContent;
               document.getElementById("item-id").value = item.id;
 
               // 選択が終わったらそれをリストから取り除く
@@ -46,10 +46,7 @@ if (location.pathname.match("orders/new")){
 
               // 価格や番号などを取り出しHTMLを書き換えて表示させる
               const itemNum = document.getElementById("item-num-");
-              itemNum.innerHTML = item.code;
               const itemPrice = document.getElementById("item-price-");           
-              itemPrice.innerHTML = item.price;
-
               
               let addItem = `
               <div class="parent-item" id="parent-item-${itemElementNum}">
@@ -61,10 +58,13 @@ if (location.pathname.match("orders/new")){
                   <div class="col-md-1" ><input type = "button", class="delete_btn", id="delete-item-${itemElementNum}", value="削除"></div>
                 </div> 
               </div> `;
-              items.insertAdjacentHTML("afterend", addItem);
+              order_items.insertAdjacentHTML("afterend", addItem);
 
+              // １個以上のアイテムが追加れたら、検索フォームのhiddenを無効にして送信対象にしない
+              if (itemElementNum >= 1 && itemElementNum <=1 ) {  
+                document.getElementById("item-id").disabled = true;
+              }
               // ボタンクリックで削除
-
               // querySelectorで生成された親要素のクラスを指定してIDを取得
               const objId = document.querySelector(".parent-item").id;
               // querySelectorでボタンのクラスを取得して、それに対してイベントを付与する
@@ -73,6 +73,7 @@ if (location.pathname.match("orders/new")){
                 const deleteObj = document.getElementById(objId);
                 // 取得した要素をremove()で削除
                 deleteObj.remove();
+                
               });            
             });  
           });
