@@ -1,6 +1,5 @@
 <%= form_with model: @customer, url: customers_path, local: true do |f| %>
 
-<div class="customer_regi">
     <div class="row">
       <div class="col-md-4 bg-secondary text-white border">購入者名</div>
       <div class="col-md-6 bg-secondary text-white border">会社名</div>
@@ -87,5 +86,4 @@
         <%= f.submit "保存する", class: "btn btn-primary"  %>
       </div>
     </div>  
-</div>
 <% end %>

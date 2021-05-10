@@ -4,8 +4,8 @@
     <div class="col-md-4 bg-secondary text-white border">購入者</div>
   </div>  
   <div class="row">
-    <div class="col-md-4"><%= f.text_field :order_num, class: "form-control", placeholder: "注文番号" %></div>
-    <div class="col-md-4"><%= f.collection_select(:customer_id, Customer.all, :id, :company, {:include_blank => "購入者を選択してください"}, { class:"btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"}) %> </div>
+    <div class="col-md-4 m-2"><%= f.text_field :order_num, class: "form-control", placeholder: "注文番号" %></div>
+    <div class="col-md-4 m-2"><%= f.collection_select(:customer_id, Customer.all, :id, :company, {:include_blank => "購入者を選択してください"}, { class:"btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"}) %> </div>
   </div>  
   <div class="row">
     <div class="col-md-8 bg-secondary text-white border">商品検索</div>
@@ -13,7 +13,7 @@
   <div class="row" id= "items"> 
     <div class="item-field" id="item-field-">
       <div class="row" id="parent-div-">
-        <div class="col-md-3 "><%= f.text_field :item_id, id: "item-name", class: "item-name", placeholder: "商品名を入力", autocomplete: "off" %>
+        <div class="col-md-3"><%= f.text_field :item_id, id: "item-name", class: "item-name", placeholder: "商品名を入力", autocomplete: "off" %>
           <div class="row" id="search-result-"></div>
           <div class="row"><%= f.hidden_field :item_id, id: "item-id", name: "item_ids[]" %></div>
         </div> 
@@ -29,11 +29,12 @@
   </div>  
 
   <div class="row">
-    <div class="col-md-8 bg-secondary text-white border">合計額</div>
+    <div class="col-md-3 bg-secondary text-white border">合計額</div>
   </div> 
     <div class="row">
-      <%= f.label :price, "価格" %><br />
-      <%= f.text_field :price %>
+      <div class="col-md-3 m-2">
+        <%= f.text_field :price, class: "form-control", placeholder: "合計価格を入力" %>
+      </div>
     </div>
     
   

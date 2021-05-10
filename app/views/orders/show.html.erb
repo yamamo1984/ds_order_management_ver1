@@ -1,3 +1,4 @@
+<div class="container">
 <%= link_to "削除する", order_path, method: :delete, class: :prototype__btn %>
 <%# 注文者情報のまとめ %>
 <% c_name = @order_for_detail.customer.last_name + @order_for_detail.customer.first_name 
@@ -93,3 +94,4 @@
     <div class="prototype__manage">
       <%= link_to "一覧に戻る", orders_path, class: :prototype__btn %>
     </div>
+</div>
