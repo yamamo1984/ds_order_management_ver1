@@ -18,10 +18,9 @@ class AddOrdersController < ApplicationController
       @order.user_id = order_params['user_id']
       @order.item_id = i
       if @order.save
-        redirect_to orders_path(@order)
-        
+        redirect_to orders_path(@order) and return     
       else  
-        render :new
+        render :new 
       end   
     end  
   end
