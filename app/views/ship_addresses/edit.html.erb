@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <h2>配送先編集</h2>
+  </div>  
       <%= form_with model: [@customer, @ship_address], local: true do |f| %>
       <%= render partial: 'form', locals: { form: f} %>
       <% end %>
