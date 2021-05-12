@@ -2,6 +2,7 @@
   <div class="row">
     <h2>商品編集</h2>
   </div> 
+  
   <div class="row">  
       <%= form_with(model: @item, local: true) do |f| %>
       <%= render partial: 'form', locals: { form: f} %>

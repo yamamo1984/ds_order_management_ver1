@@ -2,13 +2,19 @@
 <%= render 'shared/error_messages', model: f.object %>
 <div class="container">
     <div class="row">
-      <div class="col-md-2 bg-secondary text-white border">商品コード</div>
+      <div class="col-md-2 bg-secondary text-white border">商品番号</div>
       <div class="col-md-6 bg-secondary text-white border">商品名</div>
     </div>  
 
     <div class="row mt-2 mb-2">
       <div class="col-md-2">
+        <%# 編集時には商品番号が変更できない %>
+        <% if @item.code.present? %>
+        <%= f.text_field :code, class: "form-control", autocomplete: "off", placeholder: "例）A-0000", readonly: true %>
+        <% else %>
         <%= f.text_field :code, class: "form-control", autocomplete: "off", placeholder: "例）A-0000" %>
+        <% end %>
+
       </div>
       <div class="col-md-6">
         <%= f.text_field :name, class: "form-control", autocomplete: "off", placeholder: "例）商品A" %>
