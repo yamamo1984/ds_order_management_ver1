@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
   def update
     order = Order.find(params[:id])
     order.update(order_params_for_edit)
-    if order.save!
+    if order.save
       redirect_to order_path(order.order_num)
     else  
       render :edit

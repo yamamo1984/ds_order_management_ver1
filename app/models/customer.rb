@@ -13,7 +13,7 @@ class Customer < ApplicationRecord
     extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to :place
 
-     #ジャンルの選択が「--」の時は保存できないようにする
+    #ジャンルの選択が「--」の時は保存できないようにする
     validates :place_id, numericality: { other_than: 0, message: "を選択してください"}
 
     has_many :orders

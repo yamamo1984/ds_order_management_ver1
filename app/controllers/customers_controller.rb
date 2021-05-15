@@ -22,9 +22,9 @@ class CustomersController < ApplicationController
   end
 
   def update
-    customer = Customer.find(params[:id])
-    customer.update(customer_params)
-      if customer.save
+    @customer = Customer.find(params[:id])
+    @customer.update(customer_params)
+      if @customer.save
         redirect_to customers_path
     else  
       render :edit

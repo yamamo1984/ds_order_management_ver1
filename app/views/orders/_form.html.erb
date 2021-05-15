@@ -1,11 +1,12 @@
 <%= form_with model: @order, url: orders_path, local: true do |f| %>
+<%= render 'shared/error_messages', model: f.object %>
   <div class="row">
     <div class="col-md-4 bg-secondary text-white border">注文番号</div>
     <div class="col-md-4 bg-secondary text-white border">購入者</div>
   </div>  
   <div class="row">
     <div class="col-md-4 m-2"><%= f.text_field :order_num, class: "form-control", placeholder: "注文番号" %></div>
-    <div class="col-md-4 m-2"><%= f.collection_select(:customer_id, Customer.all, :id, :company, {:include_blank => "購入者を選択してください"}, { class:"btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"}) %> </div>
+    <div class="col-md-4 m-2"><%= f.collection_select(:customer_id, Customer.all, :id, :company, {}, { class:"btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"}) %> </div>
   </div>  
   <div class="row">
     <div class="col-md-8 bg-secondary text-white border">商品検索</div>
@@ -58,7 +59,7 @@
   </div>
   <div class="row">
     <div class="col-md-2"><%= f.text_field :post_code, class: "form-control", placeholder: "ハイフン無し" %></div>
-    <div class="col-md-2"><%= f.collection_select(:place_id, Place.all, :id, :name, {:include_blank => "都道府県"}, { class:"btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"}) %> </div>
+    <div class="col-md-2"><%= f.collection_select(:place_id, Place.all, :id, :name, {}, { class:"btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"}) %> </div>
     <div class="col-md-2"><%= f.text_field :city, class: "form-control", placeholder: "市町村" %></div>
     <div class="col-md-6"><%= f.text_field :street_num, class: "form-control", placeholder: "番地" %></div>
   </div> 
