@@ -29,8 +29,8 @@ class ShipAddressesController < ApplicationController
   def update
     ship_address = ShipAddress.find(params[:id])
     ship_address.update(ship_address_params)
-     if ship_address.save
-       redirect_to customer_ship_address_path(params[:customer_id])
+    if ship_address.save
+      redirect_to customer_ship_address_path(params[:customer_id])
     else  
       render :edit
   end   
@@ -45,7 +45,7 @@ class ShipAddressesController < ApplicationController
 
   private
   def ship_address_params
-    params.require(:ship_address).permit(:ship_address_num, :first_name, :last_name, :company, :tel, :post_code, :place_id, :city, :street_num, :building, :memo).merge(customer_id: params[:customer_id])
+    params.require(:ship_address).permit(:ship_address_num, :first_name, :last_name, :company, :tel, :post_code, :place_id, :city, :email, :street_num, :building, :memo).merge(customer_id: params[:customer_id])
   end
 
   def set_ship_address
