@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe OrderShipAddress, type: :model do
-  before do
-    @order_ship_address = FactoryBot.build(:order_ship_address)
-  end  
-
   describe "注文新規登録" do
+    before do
+      @order_ship_address = FactoryBot.build(:order_ship_address)
+    end  
+
     context "新規登録できる時" do
       it "必要情報が入力されていればでは登録できる" do
         expect(@order_ship_address).to be_valid

@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = OrderShipAddress.new(order_params)
+    @order.valid?
     @order.ship_save
     @ship_address_id = ShipAddress.last.id   
     #eachメソッドで複数の配列を回すための記述
@@ -27,7 +28,8 @@ class OrdersController < ApplicationController
       @order.item_id = i
       @order.save
     end  
-    if @order.save
+    if 
+      @order.save
       redirect_to orders_path(@order)
     else  
       render :new

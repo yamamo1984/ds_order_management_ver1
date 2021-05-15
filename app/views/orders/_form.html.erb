@@ -6,7 +6,7 @@
   </div>  
   <div class="row">
     <div class="col-md-4 m-2"><%= f.text_field :order_num, class: "form-control", placeholder: "注文番号" %></div>
-    <div class="col-md-4 m-2"><%= f.collection_select(:customer_id, Customer.all, :id, :company, {}, { class:"btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"}) %> </div>
+    <div class="col-md-4 m-2"><%= f.collection_select(:customer_id, Customer.all, :id, :company, {:include_blank => "購入者を選択してください"}, { class:"btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"}) %> </div>
   </div>  
   <div class="row">
     <div class="col-md-8 bg-secondary text-white border">商品検索</div>
@@ -17,6 +17,7 @@
         <div class="col-md-3"><%= f.text_field :item_id, id: "item-name", class: "item-name", placeholder: "商品名を入力", autocomplete: "off" %>
           <div class="row" id="search-result-"></div>
           <div class="row"><%= f.hidden_field :item_id, id: "item-id", name: "item_ids[]" %></div>
+          <%# <div class="row"><%= f.hidden_field :purchace_num, id: "purchase_num", name: "purchase_nums[]" %>
         </div> 
       </div>  
     </div>  
