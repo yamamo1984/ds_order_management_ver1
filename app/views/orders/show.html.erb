@@ -1,9 +1,18 @@
 <div class="container">
 <%= link_to "削除する", order_path, method: :delete, class: :prototype__btn %>
 <%# 注文者情報のまとめ %>
+<% if @order_for_detail.customer.present? %>
 <% c_name = @order_for_detail.customer.last_name + @order_for_detail.customer.first_name 
   c_address = @order_for_detail.customer.place.name + @order_for_detail.customer.city + @order_for_detail.customer.street_num + @order_for_detail.customer.building %>
+<% else %>   
+<% c_name = "存在しない顧客" %>
+<% c_address = "存在しない顧客" %>
+<% end %>
+
+
+
 <%# 配送先情報のまとめ %>
+<% if @order_for_detail.ship_address.present? %>
 <% s_name = @order_for_detail.ship_address.last_name + @order_for_detail.ship_address.first_name
   s_address = @order_for_detail.ship_address.place.name + @order_for_detail.ship_address.city + @order_for_detail.ship_address.street_num + @order_for_detail.ship_address.building %>
     <h1>注文詳細</h1>
