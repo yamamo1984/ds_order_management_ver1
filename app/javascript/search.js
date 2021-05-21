@@ -54,7 +54,7 @@ if (location.pathname.match("orders/new") || location.pathname.match("add_orders
                   <div class="col-md-3" id = "item-num-${itemElementNum}">${item.code}</div>
                   <div class="col-md-3 ">${item.name}<input name="item_ids[]", type = "hidden", id= "item-name-${itemElementNum}", value = "${item.id}"> </div>
                   <div class="col-md-3" id = "item-price-${itemElementNum}">${item.price}</div>
-                  <div class="col-md-2" ><input name="purchase_nums[]", type = "text", style="width: 100px;", id = "purchase-num-${itemElementNum}" ></div>
+                  <div class="col-md-2" ><input name="purchase_nums[]", type = "text", style="width: 100px;", required = "true", id = "purchase-num-${itemElementNum}" ></div>
                   <div class="col-md-1" ><input type = "button", class="delete_btn", id="delete-item-${itemElementNum}", value="削除"></div>
                 </div> 
               </div> `;

@@ -1,13 +1,44 @@
 <div class="container">
-<%= link_to "削除する", order_path, method: :delete, class: :prototype__btn %>
+
 <%# 注文者情報のまとめ %>
-<% c_name = @order_for_detail.customer.last_name + @order_for_detail.customer.first_name 
-  c_address = @order_for_detail.customer.place.name + @order_for_detail.customer.city + @order_for_detail.customer.street_num + @order_for_detail.customer.building %>
-<%# 配送先情報のまとめ %>
-<% s_name = @order_for_detail.ship_address.last_name + @order_for_detail.ship_address.first_name
-  s_address = @order_for_detail.ship_address.place.name + @order_for_detail.ship_address.city + @order_for_detail.ship_address.street_num + @order_for_detail.ship_address.building %>
-    <h1>注文詳細</h1>
-<%# 発注者詳細 %>
+<% if @order_for_detail.customer.present? %>
+  <% c_name = @order_for_detail.customer.last_name + @order_for_detail.customer.first_name 
+    c_address = @order_for_detail.customer.place.name + @order_for_detail.customer.city + @order_for_detail.customer.street_num + @order_for_detail.customer.building
+    c_company = @order_for_detail.customer.company
+    c_post_code = @order_for_detail.customer.post_code
+    c_tel = @order_for_detail.customer.tel
+    c_email = @order_for_detail.customer.email %>
+  <% else %>
+    <% c_name = "データが存在しません"
+        c_address = "データが存在しません" 
+        c_company = "データが存在しません" 
+        c_post_code = "データが存在しません" 
+        c_tel = "データが存在しません" 
+        c_email = "データが存在しません" %>
+  <% end %>
+  <%# 配送先情報のまとめ %>
+  <% if @order_for_detail.ship_address.present? %>  
+    <% s_name = @order_for_detail.ship_address.last_name + @order_for_detail.ship_address.first_name
+      s_address = @order_for_detail.ship_address.place.name + @order_for_detail.ship_address.city + @order_for_detail.ship_address.street_num + @order_for_detail.ship_address.building
+      s_ship_address_num = @order_for_detail.ship_address.ship_address_num
+      s_company = @order_for_detail.ship_address.company
+      s_post_code = @order_for_detail.ship_address.post_code
+      s_tel = @order_for_detail.ship_address.tel
+      s_email = @order_for_detail.ship_address.email %>
+  <% else %> 
+    <% s_ship_address_num = "データが存在しません"
+        s_name = "データが存在しません"
+        s_address_num = "データが存在しません" 
+        s_company = "データが存在しません" 
+        s_post_code = "データが存在しません" 
+        s_tel = "データが存在しません" 
+        s_email = "データが存在しません" %>
+ <% end %>
+    
+   
+      <h1>注文詳細</h1>
+      <p>注文者を変更はできません。オーダー自体を削除する場合はすべての商品を削除してください。</p>
+  <%# 発注者詳細 %>
     <table class="table-sm table-bordered">  
       <thead class="thead-light">
         <tr>
@@ -25,11 +56,11 @@
         <td><%= "#" %></td>
         <td><%= @order_for_detail.order_num %></td> 
         <td><%= c_name %></td>
-        <td><%= @order_for_detail.customer.company %></td>
-        <td><%= @order_for_detail.customer.post_code %></td>
+        <td><%= c_company %></td>
+        <td><%= c_post_code %></td>
         <td><%= c_address %></td>
-        <td><%= @order_for_detail.customer.tel %></td>
-        <td><%= @order_for_detail.customer.email %></td>
+        <td><%= c_tel %></td>
+        <td><%= c_email %></td>
       </tbody> 
     </table>  
 <%# 発送先詳細 %>
@@ -46,13 +77,13 @@
         </tr>   
       </thead>
       <tbody>
-        <td><%= @order_for_detail.ship_address.ship_address_num %></td>
+        <td><%= s_address_num %></td>
         <td><%= s_name %></td> 
-        <td><%= @order_for_detail.ship_address.company %></td>
-        <td><%= @order_for_detail.ship_address.post_code %></td>
+        <td><%= s_company %></td>
+        <td><%= s_post_code %></td>
         <td><%= s_address %></td>
-        <td><%= @order_for_detail.ship_address.tel %></td>
-        <td><%= @order_for_detail.ship_address.email %></td>
+        <td><%= s_tel %></td>
+        <td><%= s_email %></td>
       </tbody> 
     </table>  
 

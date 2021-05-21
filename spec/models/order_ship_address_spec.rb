@@ -17,13 +17,6 @@ RSpec.describe OrderShipAddress, type: :model do
         @order_ship_address.valid?
         expect(@order_ship_address.errors.full_messages).to include "Order numを入力してください"
       end
-      it "重複した注文番号では登録できない" do
-        @order_ship_address.ship_save
-        another_ship_address = FactoryBot.build(:order_ship_address)
-        another_ship_address.order_num = @order_ship_address.order_num
-        another_ship_address.valid?
-        expect(another_order_ship_address.errors.full_messages).to include "Order numは既に登録してあります"
-      end  
       it "商品が選択されていないと登録できない" do
         @order_ship_address.item_id = ""
         @order_ship_address.valid?

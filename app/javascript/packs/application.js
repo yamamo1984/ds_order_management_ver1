@@ -9,6 +9,8 @@ require("@rails/activestorage").start()
 require("channels")
 require("../search")
 require('jquery')
+require("active_support/time")
+
 
 import 'bootstrap';
 import '../stylesheets/application';

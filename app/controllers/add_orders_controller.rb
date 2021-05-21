@@ -17,12 +17,13 @@ class AddOrdersController < ApplicationController
       @order.purchase_num = p
       @order.user_id = order_params['user_id']
       @order.item_id = i
-      if @order.save
-        redirect_to orders_path(@order) and return     
-      else  
+      @order.save
+    end
+    if @order.save
+      redirect_to orders_path(@order) and return     
+    else  
         render :new 
-      end   
-    end  
+    end    
   end
 
   def items_search

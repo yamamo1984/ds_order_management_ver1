@@ -20,6 +20,9 @@
     <th style="width: 50wh">会社名</th>
     <th style="width: 50wh">品目数</th>
     <th style="width: 50wh">請求額</th>
+    <th style="width: 50wh">受注日</th>
+    <th style="width: 50wh">出荷日</th>
+    <th style="width: 50wh">出荷日</th>
     </tr>
   </thead>
   <% @order.each do |order| %>  
@@ -34,9 +37,10 @@
           <td><%= order.customer.last_name + order.customer.first_name %></td>
           <td><%= order.customer.company %></td>
         <% end %>  
-          <td><%= "java" %></td>
-          <td><%= "java" %></td>
-          <td><%= "java" %></td>
+          <td><%= Order.where(order_num: order.order_num).count %></td>
+          <%# コンマをつける表記 %>
+          <td><%= number_to_currency(order.price, :unit => "円") %></td>
+          <td><%= l order.created_at, format: :long %></td>
 
       
     </tr>

@@ -1,9 +1,10 @@
 
-<table class="table">
+<div class="container">
+<table class="table table-sm table-bordered">
   <thead class="thead-light">
     <tr>
       <th><%= link_to "編集", edit_customer_ship_address_path, method: :get, class: "btn btn-primary btn-sm" %>
-          <%= link_to "削除", customer_ship_address_path, method: :delete, class: "btn btn-danger btn-sm" %></th>
+          <%= link_to "削除", "#{@ship_address.id}", method: :delete, class: "btn btn-danger btn-sm" %></th>
       <th></th>
     </tr>
   </thead>
@@ -53,4 +54,4 @@
 
 <%= link_to "顧客詳細に戻る",customer_path(params[:customer_id]) %>
   
-</main>
+</div>
