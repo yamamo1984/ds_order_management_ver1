@@ -23,13 +23,12 @@ class ShipAddressesController < ApplicationController
 
   def edit
     @ship_address = ShipAddress.find(params[:id])
-
   end  
 
   def update
-    ship_address = ShipAddress.find(params[:id])
-    ship_address.update(ship_address_params)
-    if ship_address.save
+    @ship_address = ShipAddress.find(params[:id])
+    @ship_address.update(ship_address_params)
+    if @ship_address.save
       redirect_to customer_ship_address_path(params[:customer_id])
     else  
       render :edit

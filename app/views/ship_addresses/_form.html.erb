@@ -11,20 +11,20 @@
       <div class="col-md-4 bg-secondary text-white border">会社名</div>
     </div>
     <div class="row">
-      <div class="col-md-4"><%= f.text_field :ship_address_num, class: "form-control", placeholder: "配送先番号" %></div>
-      <div class="col-md-2"><%= f.text_field :last_name, class: "form-control", placeholder: "姓" %></div>
-      <div class="col-md-2"><%= f.text_field :first_name, class: "form-control", placeholder: "名" %></div>
-      <div class="col-md-4"><%= f.text_field :company, class: "form-control", placeholder: "会社名" %></div>
+      <div class="col-md-4"><%= f.text_field :ship_address_num, class: "form-control", placeholder: "配送先番号", required: true %></div>
+      <div class="col-md-2"><%= f.text_field :last_name, class: "form-control", placeholder: "姓", required: true %></div>
+      <div class="col-md-2"><%= f.text_field :first_name, class: "form-control", placeholder: "名", required: true %></div>
+      <div class="col-md-4"><%= f.text_field :company, class: "form-control", placeholder: "会社名", required: true %></div>
     </div> 
     <div class="row">
       <div class="col-md-2 mt-2 bg-secondary text-white border">郵便番号</div>
       <div class="col-md-10 mt-2 bg-secondary text-white border">配送先住所</div>
     </div>
     <div class="row">
-      <div class="col-md-2"><%= f.text_field :post_code, class: "form-control", placeholder: "ハイフン無し" %></div>
-      <div class="col-md-2"><%= f.collection_select(:place_id, Place.all, :id, :name, {:include_blank => "都道府県"}, { class:"btn btn-outline-secondary dropdown-toggle dropdown-toggle-split"}) %> </div>
-      <div class="col-md-2"><%= f.text_field :city, class: "form-control", placeholder: "市町村" %></div>
-      <div class="col-md-6"><%= f.text_field :street_num, class: "form-control", placeholder: "番地" %></div>
+      <div class="col-md-2"><%= f.text_field :post_code, class: "form-control", placeholder: "ハイフンなし", required: true %></div>
+      <div class="col-md-2"><%= f.collection_select(:place_id, Place.all, :id, :name, {:include_blank => "都道府県"}, { class:"btn btn-outline-secondary dropdown-toggle dropdown-toggle-split", required: true}) %> </div>
+      <div class="col-md-2"><%= f.text_field :city, class: "form-control", placeholder: "市町村", required: true %></div>
+      <div class="col-md-6"><%= f.text_field :street_num, class: "form-control", placeholder: "番地", required: true %></div>
     </div> 
     <div class="row">
       <div class="col-md-6 mt-2 bg-secondary text-white border">建物名</div>
@@ -34,7 +34,7 @@
     </div>
     <div class="row">
       <div class="col-md-6"><%= f.text_field :building, class: "form-control", placeholder: "任意" %></div>
-      <div class="col-md-3"><%= f.text_field :tel, class: "form-control", placeholder: "OOO-OOOO-OOOO" %></div>
+      <div class="col-md-3"><%= f.text_field :tel, class: "form-control", placeholder: "ハイフンなし", required: true %></div>
       <div class="col-md-3"><%= f.text_field :email, class: "form-control", placeholder: "例：test@mail.com" %></div>
     </div> 
     <div class="row">
@@ -42,8 +42,45 @@
     </div>
     <div class="row">
       <div class="col-md-6 mb-2"><%= f.text_area :tel, class: "form-control", placeholder: "備考" %></div>
-      <div class="actions"><%= f.submit "保存する", class: "btn btn-primary" %></div>
+      <div class="actions"><%= f.submit "保存する", class: "btn btn-primary", id: "submit" %></div>
     </div>  
+
+    <script>     
+    jQuery(function() {
+
+    //javascriptとJqueryのコンフリクトを防ぐため、$をjQueryとする
+    //始めにjQueryで送信ボタンを無効化する
+    jQuery('#submit').prop("disabled", true);
+    
+    //始めにjQueryで必須欄を加工する
+    jQuery('form input:required').each(function () {
+        jQuery(this).prev("label").addClass("text-danger");
+    });
+    
+    //入力欄の操作時
+    jQuery('form input:required').change(function () {
+        //必須項目が空かどうかフラグ
+        let flag = true;
+        //必須項目をひとつずつチェック
+        jQuery('form input:required').each(function(e) {
+            //もし必須項目が空なら
+            if (jQuery('form input:required').eq(e).val() === "") {
+                flag = false;
+            }
+        });
+        console.log(flag)
+        //全て埋まっていたら
+        if (flag) {
+            //送信ボタンを復活
+            jQuery('#submit').prop("disabled", false);
+        }
+        else {
+            //送信ボタンを閉じる
+            jQuery('#submit⁄').prop("disabled", true);
+            }
+        });
+    });
+    </script>  
     </form>
   </div>  
 <% end %>
