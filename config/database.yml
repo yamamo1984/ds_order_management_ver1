@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: ds_order_management_ver1_production
-  username: ds_order_management_ver1
-  password: <%= ENV['DS_ORDER_MANAGEMENT_VER1_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
